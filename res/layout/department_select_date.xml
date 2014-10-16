@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/symptom_question_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:health="http://schemas.android.com/apk/res/net.hidev.health">
+    <include layout="@layout/common_title" />
+    <ScrollView android:id="@id/detail" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="0.1">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="93.0dip">
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="0.1">
+                    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+                            <TextView android:textSize="24.0dip" android:textColor="#ff168a92" android:gravity="bottom|center" android:id="@id/department_name" android:paddingLeft="13.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/layout_temp39" />
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="0.1" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                        <TextView android:textSize="18.0sp" android:textColor="#ff7d7d7d" android:ellipsize="end" android:gravity="top" android:id="@id/department_localtion" android:paddingLeft="13.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginBottom="6.0dip" android:text="@string/layout_temp66" android:maxLines="2" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="left|center" android:background="@drawable/memo_bg" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/layout_temp70" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff7d7d7d" android:id="@id/department_introduction" android:paddingLeft="13.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:maxLines="4" />
+            <TextView android:gravity="right" android:id="@id/show_all" android:paddingLeft="13.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:text="@string/list_more" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="left|center" android:background="@drawable/memo_bg" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/layout_temp76" />
+            <TextView android:textColor="#ff7d7d7d" android:id="@id/department_type" android:paddingLeft="16.0dip" android:paddingRight="13.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:text=" " />
+            <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="left|center" android:background="@drawable/memo_bg" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/layout_temp77" />
+            <ListView android:textSize="16.0sp" android:textColor="#ff7d7d7d" android:id="@id/show_time_list" android:paddingLeft="16.0dip" android:paddingRight="13.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
