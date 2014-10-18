@@ -399,7 +399,7 @@
     <string name="ask_online_temp42">正在开发，敬请期待</string>
     <string name="ask_online_temp43">立即充值</string>
     <string name="ask_online_temp44">暂不充值</string>
-    <string name="ask_online_temp45">咨询历史</string>
+    <string name="ask_online_temp45">提问管理</string>
     <string name="ask_online_temp46">当前位置是</string>
     <string name="ask_online_temp47">科室介绍</string>
     <string name="ask_online_temp48">暂无科室介绍</string>
@@ -1381,7 +1381,7 @@
     <string name="layout_temp609">手机号码4</string>
     <string name="layout_temp610">手机号码5</string>
     <string name="layout_temp611">分享</string>
-    <string name="layout_temp612">帐号(注册的手机号):</string>
+    <string name="layout_temp612">用 户  名:</string>
     <string name="layout_temp613">密        码:</string>
     <string name="layout_temp614">记住密码</string>
     <string name="layout_temp615">自动登录</string>
