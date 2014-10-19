@@ -182,4 +182,9 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	public RequestParams deleteDoctorCopy(String id) {
 		return HealthUtil.getRequestParams("BUS20031", new String[]{"id"},new Object[]{id });
 	}
+
+	@Override
+	public RequestParams doctorRegisterById(String doctorId) {
+		return HealthUtil.getRequestParams("BUS20032", new String[]{"doctorId"},new Object[]{doctorId });
+	}
 }

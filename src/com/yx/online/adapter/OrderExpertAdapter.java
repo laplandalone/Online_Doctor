@@ -58,26 +58,21 @@ public class OrderExpertAdapter  extends BaseAdapter
 		 ViewHolder viewHolder = null;
 
 		 viewHolder = new ViewHolder();
-		 view = LayoutInflater.from(mContext).inflate(R.layout.expert_doctor_list_item, null);		
-		 viewHolder.textView = (TextView)view.findViewById( R.id.name);
-		 viewHolder.dateView = (TextView)view.findViewById( R.id.date);
-		 viewHolder.weekView = (TextView)view.findViewById( R.id.week);
-		 ImageView img = (ImageView) view.findViewById(R.id.time_circle);
+		 view = LayoutInflater.from(mContext).inflate(R.layout.user_order_list_item, null);		
+		 viewHolder.textView = (TextView)view.findViewById( R.id.text1);
+		 viewHolder.dateView = (TextView)view.findViewById( R.id.text2);
+		 viewHolder.weekView = (TextView)view.findViewById( R.id.text4);
+		 viewHolder.teamView = (TextView)view.findViewById( R.id.text3);
 		 OrderExpert  expert=orders.get(position);
 		 String value=expert.getDoctorName();
 		 String weekDay=expert.getDay();
 		 String week=expert.getWeek();
-		 String display=expert.getDisplay();
-		 viewHolder.textView.setText(value);
+		 String teamName=expert.getTeamName();
+		 viewHolder.teamView.setText(teamName);
+		 viewHolder.textView.setText(weekDay);
 	
-		 if("Y".equals(display))
-		 {
-			 img.setBackgroundResource(R.drawable.time_item_circle);
-			 viewHolder.weekView.setVisibility(View.VISIBLE);
-			 viewHolder.dateView.setVisibility(View.VISIBLE);
-			 viewHolder.dateView.setText(weekDay);
-			 viewHolder.weekView.setText("星期"+week);
-		 }
+		 viewHolder.dateView.setText("星期"+week);
+		
 		return view;
 	}
 	
@@ -87,5 +82,6 @@ public class OrderExpertAdapter  extends BaseAdapter
 		public TextView textView;
 		public TextView dateView;
 		public TextView weekView;
+		public TextView teamView;
 	}
 }

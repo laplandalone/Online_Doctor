@@ -79,7 +79,7 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 		dialog.show();
 		// TODO Auto-generated method stub
 		String hospitalId=HealthUtil.readHospitalId();
-		RequestParams param = webInterface.queryOrderDoctorList("102","sh05","0388R");
+		RequestParams param = webInterface.doctorRegisterById("1405R");
 		invokeWebServer(param, GET_LIST);
 	}
 	
