@@ -10,21 +10,23 @@
         android:gravity="left" >
       <TextView android:layout_marginLeft="13.0dip" android:layout_weight="2.0" android:textSize="16.0sp" android:layout_gravity="center_vertical" android:textColor="@color/TextColorGreen" android:id="@id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="刘波" android:layout_below="@id/icon1" />
       <RadioGroup
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-     android:layout_gravity="center_vertical"
-    android:orientation="horizontal"
-    android:layout_marginRight="13.0dip"
-    android:checkedButton="@+id/b2"
-    android:id="@+id/RG">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginRight="13.0dip"
+        android:checkedButton="@+id/b2"
+        android:id="@+id/RG">
 
     <RadioButton 
         android:text="可见"
         android:id="@+id/b1"
+        android:button="@drawable/radio_button_question"
     />
      <RadioButton 
         android:text="不可见"
         android:id="@+id/b2"
+        android:button="@drawable/radio_button_question"
     />
 </RadioGroup>
     </LinearLayout>

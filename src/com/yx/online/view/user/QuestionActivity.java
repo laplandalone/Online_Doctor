@@ -1,17 +1,17 @@
 package com.yx.online.view.user;
 
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -29,16 +29,29 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.yx.online.adapter.MyQuestionListAdapter;
 import com.yx.online.base.BaseActivity;
 import com.yx.online.doctor.R;
-import com.yx.online.model.Doctor;
 import com.yx.online.model.User;
 import com.yx.online.model.UserQuestionT;
 import com.yx.online.tools.HealthConstant;
 import com.yx.online.tools.HealthUtil;
 
+
 public class QuestionActivity extends BaseActivity implements OnItemClickListener
 {
+	@ViewInject(R.id.ans_line)
+	ImageView ans_line;
+	
+	@ViewInject(R.id.noans_line)
+	ImageView noans_line;
+	
 	@ViewInject(R.id.title)
 	private TextView title;
+	
+	@ViewInject(R.id.text1)
+	private TextView text1;
+	
+	@ViewInject(R.id.text2)
+	private TextView text2;
+	
 	@ViewInject(R.id.contentnull)
 	private RelativeLayout layout;
 	@ViewInject(R.id.submit)
@@ -63,18 +76,28 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		initView();
 	}
 
+	@SuppressLint("ResourceAsColor")
 	@OnClick(R.id.noans)
 	public void questionAns(View v)
 	{
+		text1.setTextColor(R.color.TextColorGreen);
+		text2.setTextColor(R.color.TextColorGreen);
+		ans_line.setBackgroundResource(R.drawable.nav_horizontal_line);
+		noans_line.setBackgroundResource(R.drawable.black_line);
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		RequestParams param = webInterface.getDoctorQuestionsByType("ASH_0009","noans");
 		invokeWebServer(param, ADD_QUESTION);
 	}
 
+	@SuppressLint("ResourceAsColor")
 	@OnClick(R.id.ans)
 	public void questionNoAns(View v)
 	{
+		text1.setTextColor(R.color.TextColorGreen);
+		text2.setTextColor(R.color.TextColorGreen);
+		ans_line.setBackgroundResource(R.drawable.black_line);
+		noans_line.setBackgroundResource(R.drawable.nav_horizontal_line);
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		RequestParams param = webInterface.getDoctorQuestionsByType("ASH_0009","ans");

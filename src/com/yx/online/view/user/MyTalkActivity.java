@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -58,6 +61,10 @@ public class MyTalkActivity extends BaseActivity
     private TalkAdapter adapter;
     private String id;
     private String display="false";
+	private RadioGroup radioGroup;
+	private RadioButton show;
+	private RadioButton noShow;
+	private boolean flag = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -89,11 +96,33 @@ public class MyTalkActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		radioGroup = (RadioGroup) findViewById(R.id.RG);
+		show = (RadioButton) findViewById(R.id.b1);
+		noShow = (RadioButton) findViewById(R.id.b2);
 		// TODO Auto-generated method stub
 		this.title.setText(R.string.ask_online_temp45);
 		inputImg.setVisibility(View.GONE);
 		askAgain.setVisibility(View.VISIBLE);
 		this.id= getIntent().getStringExtra("id"); 
+		
+	    radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() 
+	    {
+			
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				if (checkedId == show.getId())
+				{
+					flag = true;
+				} else if (checkedId == noShow.getId()) 
+				{
+					flag = false;
+				}
+				 dialog.setMessage("正在提交,请稍后...");
+				 dialog.show();
+				RequestParams param = webInterface.updateQuestionDisplay(id, flag+"");
+				invokeWebServer(param, DISPLAY);
+			}
+		});
 		
 	}
 

@@ -8,28 +8,28 @@
                         <LinearLayout  android:orientation="vertical" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
 
                             <TextView
-                                android:id="@id/text3"
+                                android:id="@+id/text1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="已回复"
                                 android:textColor="@color/black"
                                 android:gravity="center_horizontal"
                                 android:textSize="18.0sp" />
-                              <ImageView android:layout_marginTop="20.0dip" android:id="@id/empty_list_view" android:background="@drawable/black_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                              <ImageView android:layout_marginTop="20.0dip" android:id="@+id/ans_line" android:background="@drawable/black_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                       <LinearLayout android:id="@+id/noans"  android:gravity="center"  android:layout_width="fill_parent" android:layout_height="wrap_content"   android:layout_weight="1.0">
                         <LinearLayout android:orientation="vertical" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
 
                             <TextView
-                                android:id="@id/text3"
+                                android:id="@+id/text2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="未回复"
                                 android:textColor="@color/TextColorGreen"
                                 android:gravity="center_horizontal"
                                 android:textSize="18.0sp" />
-                                <ImageView android:layout_marginTop="20.0dip" android:id="@id/empty_list_view" android:background="@drawable/nav_horizontal_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                                <ImageView android:layout_marginTop="20.0dip" android:id="@+id/noans_line" android:background="@drawable/nav_horizontal_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
