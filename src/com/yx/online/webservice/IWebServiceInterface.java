@@ -60,5 +60,10 @@ public interface IWebServiceInterface {
 	public RequestParams doctorLogin(String userName,String password);
 	
 	public RequestParams getDoctorQuestionsByType(String doctorId, String type);
+	
 	public RequestParams updateQuestionDisplay(String id, String display);
+	
+	public RequestParams updateDoctorCopy(String id, String content);
+	
+	public RequestParams deleteDoctorCopy(String id);
 }

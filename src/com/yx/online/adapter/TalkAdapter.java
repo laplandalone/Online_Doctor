@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +19,7 @@ import com.lidroid.xutils.BitmapUtils;
 import com.yx.online.doctor.R;
 import com.yx.online.model.UserQuestionT;
 import com.yx.online.tools.HealthConstant;
+import com.yx.online.view.user.AskQuestionMsgActivity;
 
 public class TalkAdapter extends BaseAdapter
 {
@@ -140,6 +142,21 @@ public class TalkAdapter extends BaseAdapter
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.answer_text_item, null);
 			TextView textView = (TextView) convertView.findViewById(R.id.anscontent);
 			textView.setText(questionT.getContent());
+			textView.setTag(questionT);
+			textView.setOnClickListener(new OnClickListener() 
+			{
+				@Override
+				public void onClick(View v)
+				{
+					// TODO Auto-generated method stub
+					Intent intent = new Intent(mContext, AskQuestionMsgActivity.class);
+					UserQuestionT questionT = (UserQuestionT) v.getTag();
+					Bundle bundle = new Bundle();
+					bundle.putSerializable("questionT", questionT);
+					intent.putExtras(bundle);
+					mContext.startActivity(intent);
+				}
+			});
 		}
 			
 		return convertView;
