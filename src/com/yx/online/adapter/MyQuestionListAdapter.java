@@ -57,7 +57,9 @@ public class MyQuestionListAdapter extends BaseAdapter
 			TextView question = (TextView) convertView.findViewById(R.id.question);
 			TextView createDate = (TextView) convertView.findViewById(R.id.createDate);
 			UserQuestionT questionT = questionTs.get(position);
-			doctorName.setText(questionT.getUserTelephone());
+			String telephone=questionT.getUserTelephone();
+			
+			doctorName.setText(telephone.substring(0,3)+"****"+telephone.substring(7,11));
 			question.setText(questionT.getContent());
 			createDate.setText(questionT.getCreateDate());
 		

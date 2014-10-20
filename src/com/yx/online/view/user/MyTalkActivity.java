@@ -60,11 +60,10 @@ public class MyTalkActivity extends BaseActivity
     private List<UserQuestionT> questionTs;
     private TalkAdapter adapter;
     private String id;
-    private String display="false";
+    private String display="private";
 	private RadioGroup radioGroup;
 	private RadioButton show;
 	private RadioButton noShow;
-	private boolean flag = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -74,9 +73,10 @@ public class MyTalkActivity extends BaseActivity
 		this.list=(ListView) findViewById(R.id.talklist);
 		ViewUtils.inject(this);
 		addActivity(this);
-		initView();
 		initValue();
+		initView();
 	}
+	
 
 	@OnClick(R.id.back)
 	public void toHome(View v)
@@ -104,7 +104,13 @@ public class MyTalkActivity extends BaseActivity
 		inputImg.setVisibility(View.GONE);
 		askAgain.setVisibility(View.VISIBLE);
 		this.id= getIntent().getStringExtra("id"); 
-		
+		UserQuestionT questionT = (UserQuestionT) getIntent().getSerializableExtra("questioin");
+		String authType=questionT.getAuthType();
+		if("public".equals(authType))
+		{
+			show.setChecked(true);
+			noShow.setChecked(false);
+		}
 	    radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() 
 	    {
 			
@@ -112,14 +118,14 @@ public class MyTalkActivity extends BaseActivity
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				if (checkedId == show.getId())
 				{
-					flag = true;
+					display = "private";
 				} else if (checkedId == noShow.getId()) 
 				{
-					flag = false;
+					display = "public";
 				}
 				 dialog.setMessage("正在提交,请稍后...");
 				 dialog.show();
-				RequestParams param = webInterface.updateQuestionDisplay(id, flag+"");
+				RequestParams param = webInterface.updateQuestionDisplay(id, display);
 				invokeWebServer(param, DISPLAY);
 			}
 		});
@@ -165,6 +171,7 @@ public class MyTalkActivity extends BaseActivity
 		this.doctorId=questionT.getDoctorId();
 		this.phone=questionT.getUserTelephone();
 		this.questionId=questionT.getQuestionId();
+		
 		RequestParams param = webInterface.getUserQuestionsByIds(questionId);
 		invokeWebServer(param, GET_LIST);
 		

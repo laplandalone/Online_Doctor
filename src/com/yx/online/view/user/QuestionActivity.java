@@ -1,6 +1,7 @@
 package com.yx.online.view.user;
 
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -259,4 +261,12 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		startActivity(intent);
 	}
 
+
+    @Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	initValue();
+    	initView();
+    }
 }
