@@ -26,6 +26,7 @@ import com.yx.online.doctor.R;
 import com.yx.online.model.User;
 import com.yx.online.tools.HealthConstant;
 import com.yx.online.tools.HealthUtil;
+import com.yx.online.view.other.CheckNewVersion;
 
 public class LoginActivity extends BaseActivity
 {
@@ -63,6 +64,9 @@ public class LoginActivity extends BaseActivity
 		addActivity(this);
 		initView();
 		initValue();
+		Intent intent = new Intent(this, CheckNewVersion.class);
+		intent.putExtra("flag", "auto");
+		startService(intent);
 	}
 
 	@OnClick(R.id.rember_psw)
