@@ -27,7 +27,7 @@ public class UserMainActivity extends BaseActivity
 	@ViewInject(R.id.item_layout2)
 	private LinearLayout itemLayout2;
 
-	@ViewInject(R.id.login_name)
+	@ViewInject(R.id.userName)
 	private TextView loginNameTV;
 
 	@ViewInject(R.id.photo)
@@ -103,14 +103,7 @@ public class UserMainActivity extends BaseActivity
 			User user = HealthUtil.getUserInfo();
 			if (user != null && !"".equals(user))
 			{
-				loginNameTV.setText(user.getUserName());
-				if("男".equals(user.getSex()))
-				{
-					photo.setBackgroundResource(R.drawable.male);
-				}else
-				{
-					photo.setBackgroundResource(R.drawable.female);
-				}
+				loginNameTV.setText(user.getName());
 			}
 			break;
 
@@ -125,7 +118,7 @@ public class UserMainActivity extends BaseActivity
 		title.setText("个人中心");
 		// TODO Auto-generated method stub
 		User user = HealthUtil.getUserInfo();
-//		loginNameTV.setText(user.getUserName());
+		loginNameTV.setText("欢迎,"+user.getName()+"医生");
 //		if("男".equals(user.getSex()))
 //		{
 //			photo.setBackgroundResource(R.drawable.male);

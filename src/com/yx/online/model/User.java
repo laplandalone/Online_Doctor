@@ -5,15 +5,14 @@ import com.google.gson.annotations.Expose;
 public class User
 {
 	@Expose
-	private String userName;
+	private String hospital_id;
 	@Expose
-	private String userNo;
+	private String manager_id;
 	@Expose
-	private String userId;
+	private String name;
 	@Expose
-	private String telephone;
-	@Expose
-	private String sex;
+	private String doctor_id;
+	
 	@Expose
 	private String password;
 	
@@ -27,54 +26,37 @@ public class User
 		this.password = password;
 	}
 
-	public String getSex()
-	{
-		return sex;
+	public String getHospital_id() {
+		return hospital_id;
 	}
 
-	public void setSex(String sex)
-	{
-		this.sex = sex;
+	public void setHospital_id(String hospital_id) {
+		this.hospital_id = hospital_id;
 	}
 
-	public String getUserName()
-	{
-		return userName;
+	public String getManager_id() {
+		return manager_id;
 	}
 
-	public void setUserName(String userName)
-	{
-		this.userName = userName;
+	public void setManager_id(String manager_id) {
+		this.manager_id = manager_id;
 	}
 
-	public String getUserNo()
-	{
-		return userNo;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserNo(String userNo)
-	{
-		this.userNo = userNo;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getUserId()
-	{
-		return userId;
+	public String getDoctor_id() {
+		return doctor_id;
 	}
 
-	public void setUserId(String userId)
-	{
-		this.userId = userId;
+	public void setDoctor_id(String doctor_id) {
+		this.doctor_id = doctor_id;
 	}
 
-	public String getTelephone()
-	{
-		return telephone;
-	}
-
-	public void setTelephone(String telephone)
-	{
-		this.telephone = telephone;
-	}
 
 }

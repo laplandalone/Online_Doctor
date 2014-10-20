@@ -75,7 +75,7 @@ public class LoginActivity extends BaseActivity
 			remberPswFlag = false;
 		} else
 		{
-			HealthUtil.writeUserPhone(userName.getText().toString().trim());
+			HealthUtil.writeUserName(userName.getText().toString().trim());
 			HealthUtil.writeUserPassword(password.getText().toString().trim());
 			remberPsw.setBackgroundResource(R.drawable.symptom_select_true);
 			remberPswFlag = true;
@@ -140,9 +140,9 @@ public class LoginActivity extends BaseActivity
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-		if (!"".equals(HealthUtil.readUserPhone()) && !"".equals(HealthUtil.readUserPassword()))
+		if (!"".equals(HealthUtil.readUserName()) && !"".equals(HealthUtil.readUserPassword()))
 		{
-			this.userName.setText(HealthUtil.readUserPhone());
+			this.userName.setText(HealthUtil.readUserName());
 			this.password.setText(HealthUtil.readUserPassword());
 			this.remberPsw.setBackgroundResource(R.drawable.symptom_select_true);
 			this.remberPswFlag = true;
@@ -181,11 +181,11 @@ public class LoginActivity extends BaseActivity
 		dialog.show();
 		if (remberPswFlag)
 		{
-			HealthUtil.writeUserPhone(telephone);
+			HealthUtil.writeUserName(telephone);
 			HealthUtil.writeUserPassword(passwordT);
 		} else
 		{
-			HealthUtil.writeUserPhone("");
+			HealthUtil.writeUserName("");
 			HealthUtil.writeUserPassword("");
 		}
 
@@ -283,7 +283,7 @@ public class LoginActivity extends BaseActivity
 				{
 					HealthUtil.writeUserInfo(returnMsg.toString());
 					User user = HealthUtil.getUserInfo();
-					HealthUtil.writeUserId(user.getUserId());
+					HealthUtil.writeDoctorId(user.getDoctor_id());
 					HealthUtil.infoAlert(LoginActivity.this, "登录成功");
 				    Intent intent = new Intent(LoginActivity.this,UserMainActivity.class);
 				    startActivity(intent);

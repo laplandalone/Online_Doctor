@@ -86,7 +86,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		noans_line.setBackgroundResource(R.drawable.black_line);
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
-		RequestParams param = webInterface.getDoctorQuestionsByType("ASH_0009","noans");
+		RequestParams param = webInterface.getDoctorQuestionsByType(HealthUtil.readDoctorId(),"noans");
 		invokeWebServer(param, ADD_QUESTION);
 	}
 
@@ -100,7 +100,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		noans_line.setBackgroundResource(R.drawable.nav_horizontal_line);
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
-		RequestParams param = webInterface.getDoctorQuestionsByType("ASH_0009","ans");
+		RequestParams param = webInterface.getDoctorQuestionsByType(HealthUtil.readDoctorId(),"ans");
 		invokeWebServer(param, ADD_QUESTION);
 	}
 
@@ -144,7 +144,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 			this.user = HealthUtil.getUserInfo();
 			if (this.user != null)
 			{
-				this.userId = user.getUserId();
+				this.userId = user.getDoctor_id();
 				submitBtn.setVisibility(View.GONE);
 				RequestParams param = webInterface.getUserQuestionsByUserId(userId,HealthUtil.readHospitalId());
 				invokeWebServer(param, ADD_QUESTION);

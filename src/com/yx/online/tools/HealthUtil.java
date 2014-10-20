@@ -79,14 +79,7 @@ public class HealthUtil {
 		
 		public static String readHospitalName() 
 		{
-			if("101".equals(readHospitalId()))
-			{
-				return  "清华阳光口腔医院";
-			}else if("102".equals(readHospitalId()))
-			{
 				return  "亚洲心脏病医院";
-			}
-			return userPreferences.getString("hospitalName", "");
 		}
 		
 		public static void writeLoginAuto(String loginAuto)
@@ -99,13 +92,14 @@ public class HealthUtil {
 			return userPreferences.getString("loginAuto", "");
 		}
 		
-		public static void writeUserPhone(String userPhone)
+		public static void writeUserName(String name)
 		{
-			userPreferences.edit().putString("userPhone", userPhone).commit();
+			userPreferences.edit().putString("name", name).commit();
 		}
-		public static String readUserPhone() 
+		
+		public static String readUserName() 
 		{
-			return userPreferences.getString("userPhone", "");
+			return userPreferences.getString("name", "");
 		}
 		
 		public static void writeUserPassword(String psw)
@@ -118,14 +112,14 @@ public class HealthUtil {
 			return userPreferences.getString("userPasssword", "");
 		}
 		
-		public static void writeUserId(String info)
+		public static void writeDoctorId(String info)
 		{
-			userPreferences.edit().putString("userId", info).commit();
+			userPreferences.edit().putString("doctorId", info).commit();
 		}
 		
-		public static String readUserId() 
+		public static String readDoctorId() 
 		{
-			return userPreferences.getString("userId", "");
+			return userPreferences.getString("doctorId", "");
 		}
 		
 		public static void writeUserInfo(String info)
