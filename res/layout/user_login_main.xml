@@ -2,15 +2,20 @@
 <LinearLayout android:orientation="vertical" android:background="@drawable/hospital_background_new" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/common_title" />
-    <ScrollView android:id="@+id/scorllView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="13.0dip" android:layout_weight="1.0">
+    <ScrollView android:id="@+id/scorllView" android:layout_width="fill_parent" android:layout_height="0.0dip"  android:layout_weight="1.0">
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-              <ImageView  android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:background="@drawable/head" android:layout_width="wrap_content" android:layout_height="180.0dip"/>
+              <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.yx.online.adapter.ImgViewPager android:id="@+id/imgViewPager" android:layout_width="fill_parent" android:layout_height="160.0dip" />
+                <RelativeLayout android:layout_gravity="bottom"  android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout  android:orientation = "horizontal" android:gravity="center" android:id="@+id/vb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </FrameLayout>
               <TextView android:id="@+id/userName" android:layout_marginTop="8.0dip" android:layout_marginLeft="13.0dip" android:textSize="18.0sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="欢迎，"   />
          
             <LinearLayout android:orientation="vertical" android:padding="0.0dip"  android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
                   
                 <LinearLayout android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:orientation="horizontal" android:id="@id/item_layout3" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
-                    <LinearLayout   android:id="@id/item_layout1"  android:gravity="bottom|center_horizontal" android:background="@drawable/register_plan_selector" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
+                    <LinearLayout   android:id="@id/item_layout1"  android:gravity="bottom|center_horizontal" android:background="@drawable/register_plan_selector" android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
                         <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
 
                             <TextView
@@ -24,7 +29,7 @@
                                 android:textSize="14.0sp" />
                         </RelativeLayout>
                     </LinearLayout>
-                      <LinearLayout android:id="@id/item_layout2"  android:gravity="bottom|center_horizontal" android:background="@drawable/ques_manage_selector" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
+                      <LinearLayout android:id="@id/item_layout2"  android:gravity="bottom|center_horizontal" android:background="@drawable/ques_manage_selector" android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
                         <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
 
                             <TextView
@@ -40,10 +45,10 @@
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:orientation="horizontal" android:id="@id/item_layout3" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-                    <LinearLayout   android:gravity="bottom|center_horizontal" android:background="@drawable/build" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
+                    <LinearLayout   android:gravity="bottom|center_horizontal" android:background="@drawable/build" android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
                        
                     </LinearLayout>
-                   <LinearLayout   android:gravity="bottom|center_horizontal" android:background="@drawable/build" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_marginRight="5.0dip" android:layout_marginLeft="8.0dip" android:layout_weight="1.0">
+                   <LinearLayout   android:gravity="bottom|center_horizontal" android:background="@drawable/build" android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_marginRight="5.0dip" android:layout_marginLeft="8.0dip" android:layout_weight="1.0">
                       
                     </LinearLayout>
                 </LinearLayout>

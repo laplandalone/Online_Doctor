@@ -4,8 +4,8 @@
     <!-- 广告滚动圆点View -->
     <View
         android:id="@+id/ad_item_v"
-        android:layout_width="20dip"
-        android:layout_height="4dip"
+        android:layout_width="5dip"
+        android:layout_height="5dip"
         android:background="@drawable/pager_item"
         android:layout_marginLeft="1.5dip"
         android:layout_marginRight="1.5dip"

@@ -15,7 +15,7 @@
                                 android:textColor="@color/black"
                                 android:gravity="center_horizontal"
                                 android:textSize="16.0sp" />
-                              <ImageView android:layout_marginTop="20.0dip" android:id="@+id/ans_line" android:background="@drawable/black_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                              <ImageView android:layout_marginTop="10.0dip" android:id="@+id/ans_line" android:background="@drawable/black_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                       <LinearLayout android:id="@+id/noans"  android:gravity="center"  android:layout_width="fill_parent" android:layout_height="wrap_content"   android:layout_weight="1.0">
@@ -29,7 +29,7 @@
                                 android:textColor="@color/TextColorGreen"
                                 android:gravity="center_horizontal"
                                 android:textSize="16.0sp" />
-                                <ImageView android:layout_marginTop="20.0dip" android:id="@+id/noans_line" android:background="@drawable/nav_horizontal_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                                <ImageView android:layout_marginTop="10.0dip" android:id="@+id/noans_line" android:background="@drawable/nav_horizontal_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

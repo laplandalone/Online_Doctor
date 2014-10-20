@@ -1,15 +1,20 @@
 package com.yx.online.view.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ImageView.ScaleType;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.yx.online.adapter.ImgViewPager;
 import com.yx.online.base.BaseActivity;
 import com.yx.online.doctor.R;
 import com.yx.online.model.User;
@@ -32,6 +37,15 @@ public class UserMainActivity extends BaseActivity
 
 	@ViewInject(R.id.photo)
 	private ImageView photo;
+	
+	@ViewInject(R.id.imgViewPager)
+	ImgViewPager myPager; // 图片容器
+
+	@ViewInject(R.id.vb)
+	LinearLayout ovalLayout; // 圆点容器
+
+	private List<View> listViews; // 图片组
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -42,8 +56,32 @@ public class UserMainActivity extends BaseActivity
 		addActivity(this);
 		initView();
 		initValue();
+		
+		initViewPager();
+		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
+				R.drawable.pager_select, R.drawable.pager_item);
 	}
 
+	/**
+	 * 初始化图片
+	 */
+	private void initViewPager()
+	{
+		listViews = new ArrayList<View>();
+		int[] imageResId = new int[]
+		{ R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d};
+		String hospitalId=HealthUtil.readHospitalId();
+		for(int i = 0; i < imageResId.length; i++)
+		{
+			ImageView imageView = new ImageView(this);
+//			bitmapUtils.configDefaultLoadingImage(R.drawable.default_loading_img);
+//			bitmapUtils.configDefaultLoadFailedImage(R.drawable.load_failure);
+			imageView.setBackgroundResource(imageResId[i]);
+			imageView.setScaleType(ScaleType.CENTER_CROP);
+			listViews.add(imageView);
+			
+		}
+	}
 	@OnClick(R.id.health_data_lay)
 	public void toMyHealth(View v)
 	{
