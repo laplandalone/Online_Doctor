@@ -4,7 +4,7 @@
     <include layout="@layout/common_title" />
      
 	<LinearLayout  android:id="@+id/orderTitle"  android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/title_background_md" android:layout_width="fill_parent" android:layout_height="40.0dip">
-
+<ImageView android:visibility="invisible"   android:layout_gravity="center_vertical" android:id="@id/arrow" android:layout_width="50.0dip" android:layout_height="wrap_content"    android:src="@drawable/time" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
                    />
 
                 <TextView android:visibility="invisible" android:textSize="16.0sp" android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="预约号" android:layout_weight="1.2" />
-                <TextView android:textSize="16.0sp"  android:gravity="center" android:textColor="@color/black"  android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="门诊类别" android:layout_weight="1.0" />
+                <TextView android:textSize="16.0sp"  android:gravity="center" android:textColor="@color/black"  android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="门诊类别" android:layout_weight="1.5" />
                   <ImageView android:visibility="invisible" android:layout_gravity="center_vertical" android:id="@id/arrow" android:layout_width="50.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip"   android:src="@drawable/arrow_list_item" />
             </LinearLayout>
             

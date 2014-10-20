@@ -79,6 +79,7 @@ public class TalkAdapter extends BaseAdapter
 			{
 				 imgLine.setVisibility(View.VISIBLE);
 				 ImageView img1=(ImageView) convertView.findViewById(R.id.img1);
+				 bitmapUtils.configDefaultLoadingImage(R.drawable.default_loading);
 				 bitmapUtils.display(img1,HealthConstant.question_img_Url+imgs[0]);
 				 Uri mUri = Uri.parse(HealthConstant.question_img_Url+imgs[0]);
 				 img1.setTag(mUri);
@@ -99,6 +100,7 @@ public class TalkAdapter extends BaseAdapter
 			if(imgs.length>1 && imgs[1]!=null && !"".equals(imgs[1]))
 			{
 				 ImageView img2=(ImageView) convertView.findViewById(R.id.img2);
+				 bitmapUtils.configDefaultLoadingImage(R.drawable.default_loading);
 				 bitmapUtils.display(img2,HealthConstant.question_img_Url+imgs[1]);
 				 Uri mUri = Uri.parse(HealthConstant.question_img_Url+imgs[1]);
 				 img2.setTag(mUri);
@@ -119,6 +121,7 @@ public class TalkAdapter extends BaseAdapter
 			if(imgs.length>2 && imgs[2]!=null && !"".equals(imgs[2]))
 			{
 				 ImageView img3=(ImageView) convertView.findViewById(R.id.img3);
+				 bitmapUtils.configDefaultLoadingImage(R.drawable.default_loading);
 				 bitmapUtils.display(img3,HealthConstant.question_img_Url+imgs[2]);
 				 Uri mUri = Uri.parse(HealthConstant.question_img_Url+imgs[2]);
 				 img3.setTag(mUri);

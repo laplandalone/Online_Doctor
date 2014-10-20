@@ -10,7 +10,7 @@
             <LinearLayout android:orientation="vertical" android:padding="0.0dip"  android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
                   
                 <LinearLayout android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:orientation="horizontal" android:id="@id/item_layout3" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
-                    <LinearLayout   android:id="@id/item_layout1"  android:gravity="bottom|center_horizontal" android:background="@drawable/register_plan_selector" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
+                    <LinearLayout   android:id="@id/item_layout1"  android:gravity="bottom|center_horizontal" android:background="@drawable/register_plan_selector" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
                         <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
 
                             <TextView
@@ -24,7 +24,7 @@
                                 android:textSize="14.0sp" />
                         </RelativeLayout>
                     </LinearLayout>
-                      <LinearLayout android:id="@id/item_layout2"  android:gravity="bottom|center_horizontal" android:background="@drawable/ques_manage_selector" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
+                      <LinearLayout android:id="@id/item_layout2"  android:gravity="bottom|center_horizontal" android:background="@drawable/ques_manage_selector" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
                         <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
 
                             <TextView
@@ -40,15 +40,15 @@
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:orientation="horizontal" android:id="@id/item_layout3" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-                    <LinearLayout   android:gravity="bottom|center_horizontal" android:background="@drawable/build" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
+                    <LinearLayout   android:gravity="bottom|center_horizontal" android:background="@drawable/build" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
                        
                     </LinearLayout>
-                   <LinearLayout   android:gravity="bottom|center_horizontal" android:background="@drawable/build" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_marginRight="5.0dip" android:layout_marginLeft="8.0dip" android:layout_weight="1.0">
+                   <LinearLayout   android:gravity="bottom|center_horizontal" android:background="@drawable/build" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_marginRight="5.0dip" android:layout_marginLeft="8.0dip" android:layout_weight="1.0">
                       
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-            <Button android:id="@+id/outLogin" android:background="@drawable/user_login_control" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="5.0dip" />
+            <Button android:id="@+id/outLogin" android:background="@drawable/user_login_control" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginTop="60.0dip" android:layout_marginBottom="5.0dip" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

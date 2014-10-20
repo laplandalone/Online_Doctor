@@ -84,12 +84,12 @@ public class UserMainActivity extends BaseActivity
 	@OnClick(R.id.outLogin)
 	public void loginOut(View v)
 	{
-//		HealthUtil.writeUserInfo("");
-//		HealthUtil.writeLoginAuto("");
-//		HealthUtil.writeHospitalTs("");
-//		Intent intent = new Intent(UserMainActivity.this, MainPageActivity.class);
-//		startActivity(intent);
-//		exit();
+		HealthUtil.writeUserInfo("");
+		HealthUtil.writeLoginAuto("");
+		HealthUtil.writeHospitalTs("");
+		Intent intent = new Intent(UserMainActivity.this, LoginActivity.class);
+		startActivity(intent);
+		exit();
 	}
 
 	@Override

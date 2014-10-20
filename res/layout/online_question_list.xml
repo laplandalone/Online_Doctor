@@ -14,7 +14,7 @@
                                 android:text="已回复"
                                 android:textColor="@color/black"
                                 android:gravity="center_horizontal"
-                                android:textSize="18.0sp" />
+                                android:textSize="16.0sp" />
                               <ImageView android:layout_marginTop="20.0dip" android:id="@+id/ans_line" android:background="@drawable/black_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
@@ -28,7 +28,7 @@
                                 android:text="未回复"
                                 android:textColor="@color/TextColorGreen"
                                 android:gravity="center_horizontal"
-                                android:textSize="18.0sp" />
+                                android:textSize="16.0sp" />
                                 <ImageView android:layout_marginTop="20.0dip" android:id="@+id/noans_line" android:background="@drawable/nav_horizontal_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>

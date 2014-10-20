@@ -30,6 +30,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.yx.online.adapter.TalkAdapter;
 import com.yx.online.base.BaseActivity;
 import com.yx.online.doctor.R;
+import com.yx.online.model.User;
 import com.yx.online.model.UserQuestionT;
 import com.yx.online.tools.HealthConstant;
 import com.yx.online.tools.HealthUtil;
@@ -44,6 +45,9 @@ public class MyTalkActivity extends BaseActivity
 
 	@ViewInject(R.id.title)
 	private TextView title;
+	
+	@ViewInject(R.id.userName)
+	private TextView userName;
 	
 	@ViewInject(R.id.input_img)
 	private  Button inputImg;
@@ -96,6 +100,8 @@ public class MyTalkActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		User user = HealthUtil.getUserInfo();
+		userName.setText(user.getName());
 		radioGroup = (RadioGroup) findViewById(R.id.RG);
 		show = (RadioButton) findViewById(R.id.b1);
 		noShow = (RadioButton) findViewById(R.id.b2);
