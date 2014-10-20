@@ -76,12 +76,12 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		initView();
 	}
 
-	@SuppressLint("ResourceAsColor")
+	
 	@OnClick(R.id.noans)
 	public void questionAns(View v)
 	{
-		text1.setTextColor(R.color.TextColorGreen);
-		text2.setTextColor(R.color.TextColorGreen);
+		text1.setTextColor(this.getResources().getColor(R.color.black));
+		text2.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
 		ans_line.setBackgroundResource(R.drawable.nav_horizontal_line);
 		noans_line.setBackgroundResource(R.drawable.black_line);
 		dialog.setMessage("正在加载,请稍后...");
@@ -90,12 +90,11 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		invokeWebServer(param, ADD_QUESTION);
 	}
 
-	@SuppressLint("ResourceAsColor")
 	@OnClick(R.id.ans)
 	public void questionNoAns(View v)
 	{
-		text1.setTextColor(R.color.TextColorGreen);
-		text2.setTextColor(R.color.TextColorGreen);
+		text1.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
+		text2.setTextColor(this.getResources().getColor(R.color.black));
 		ans_line.setBackgroundResource(R.drawable.black_line);
 		noans_line.setBackgroundResource(R.drawable.nav_horizontal_line);
 		dialog.setMessage("正在加载,请稍后...");

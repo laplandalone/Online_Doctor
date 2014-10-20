@@ -276,5 +276,11 @@ public class MyTalkActivity extends BaseActivity
 		
 	}
 
-
+    @Override
+    protected void onResume() {
+    	// TODO Auto-generated method stub
+    	super.onResume();
+    	initValue();
+    	initView();
+    }
 }

@@ -1,33 +1,19 @@
 package com.yx.online.view.user;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.provider.MediaStore;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -46,8 +32,6 @@ import com.yx.online.model.User;
 import com.yx.online.model.UserQuestionT;
 import com.yx.online.tools.HealthConstant;
 import com.yx.online.tools.HealthUtil;
-import com.yx.online.upload.FormFile;
-import com.yx.online.upload.UploadThread;
 
 public class AskQuestionMsgActivity extends BaseActivity
 {
@@ -60,6 +44,9 @@ public class AskQuestionMsgActivity extends BaseActivity
 	@ViewInject(R.id.layout1)
 	private LinearLayout imagesLayout;
 
+	@ViewInject(R.id.back)
+	private ImageView back;
+	
 	@ViewInject(R.id.img1)
 	private ImageView img1;
 
@@ -117,6 +104,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 		title.setText("我的回复");
 		 this.questionT = (UserQuestionT) getIntent().getSerializableExtra("questionT");
 		contentET.setText(questionT.getContent());
+		back.setBackgroundResource(R.drawable.back);
 	}
 
 	
@@ -148,15 +136,12 @@ public class AskQuestionMsgActivity extends BaseActivity
 
 		RequestParams param = webInterface.deleteDoctorCopy(questionT.getId());
 		invokeWebServer(param, ADD_QUESTION);
-		
 	}
 
 	@OnClick(R.id.back)
 	public void toHome(View v)
 	{
-//		Intent intent = new Intent(AskQuestionMsgActivity.this, MainPageActivity.class);
-//		startActivity(intent);
-//		exit();
+		finish();
 	}
 
 	@OnClick(R.id.submit_question)
@@ -164,12 +149,19 @@ public class AskQuestionMsgActivity extends BaseActivity
 	{
 		String content = contentET.getText() + "";
 		
+		
 		if("".equals(content))
 		{
 			HealthUtil.infoAlert(this, "回复内容为空");
 			return;
 		}
 
+		if(content.equals(questionT.getContent()))
+		{
+			HealthUtil.infoAlert(this, "回复内容没有修改");
+			return;
+		}
+		
 		if(content.length()>100)
 		{
 			HealthUtil.infoAlert(this, "回复内容过长,最多100字");
