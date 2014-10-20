@@ -16,6 +16,8 @@ import android.os.IBinder;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
+import com.lurencun.android.resource.SDCard;
+
 @SuppressLint("NewApi")
 public class DownloadService extends Service{
 	private DownloadManager downloadManager=null;
