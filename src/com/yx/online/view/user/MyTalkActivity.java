@@ -100,8 +100,7 @@ public class MyTalkActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		User user = HealthUtil.getUserInfo();
-		userName.setText(user.getName());
+	
 		radioGroup = (RadioGroup) findViewById(R.id.RG);
 		show = (RadioButton) findViewById(R.id.b1);
 		noShow = (RadioButton) findViewById(R.id.b2);
@@ -110,13 +109,7 @@ public class MyTalkActivity extends BaseActivity
 		inputImg.setVisibility(View.GONE);
 		askAgain.setVisibility(View.VISIBLE);
 		this.id= getIntent().getStringExtra("id"); 
-		UserQuestionT questionT = (UserQuestionT) getIntent().getSerializableExtra("questioin");
-		String authType=questionT.getAuthType();
-		if("public".equals(authType))
-		{
-			show.setChecked(true);
-			noShow.setChecked(false);
-		}
+		
 	    radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() 
 	    {
 			
@@ -177,7 +170,9 @@ public class MyTalkActivity extends BaseActivity
 		this.doctorId=questionT.getDoctorId();
 		this.phone=questionT.getUserTelephone();
 		this.questionId=questionT.getQuestionId();
+		String telephone=questionT.getUserTelephone();
 		
+		userName.setText(telephone.substring(0,3)+"****"+telephone.substring(7,11));
 		RequestParams param = webInterface.getUserQuestionsByIds(questionId);
 		invokeWebServer(param, GET_LIST);
 		
@@ -264,8 +259,23 @@ public class MyTalkActivity extends BaseActivity
 				JsonArray jsonArray = jsonObject.getAsJsonArray("returnMsg");
 				Gson gson = new Gson();  
 				this.questionTs = gson.fromJson(jsonArray, new TypeToken<List<UserQuestionT>>(){}.getType());  
-				 adapter = new TalkAdapter(MyTalkActivity.this, this.questionTs);
+				adapter = new TalkAdapter(MyTalkActivity.this, this.questionTs);
 				list.setAdapter(adapter);
+				UserQuestionT questionT = (UserQuestionT) getIntent().getSerializableExtra("questioin");
+				String id=questionT.getId();
+				for(UserQuestionT t:questionTs)
+				{
+					String itT=t.getId();
+					if(id!=null && id.equals(itT))
+					{
+						if("public".equals(t.getAuthType()))
+						{
+							show.setChecked(true);
+							noShow.setChecked(false);
+						}
+					}
+				}
+				
 				break;
 		    case ADD_QUESTION:
 		    	String rstFlag = jsonObject.get("returnMsg").toString();

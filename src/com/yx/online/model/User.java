@@ -16,6 +16,28 @@ public class User
 	@Expose
 	private String password;
 	
+	@Expose
+	private String register_num;
+	
+	@Expose
+	private String ques_num;
+	
+	public String getRegister_num() {
+		return register_num;
+	}
+
+	public void setRegister_num(String register_num) {
+		this.register_num = register_num;
+	}
+
+	public String getQues_num() {
+		return ques_num;
+	}
+
+	public void setQues_num(String ques_num) {
+		this.ques_num = ques_num;
+	}
+
 	public String getPassword()
 	{
 		return password;

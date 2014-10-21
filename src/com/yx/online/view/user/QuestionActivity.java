@@ -271,13 +271,4 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		intent.putExtra("id", questionT.getId());
 		startActivity(intent);
 	}
-
-
-    @Override
-    protected void onResume() {
-    	// TODO Auto-generated method stub
-    	super.onResume();
-    	initValue();
-    	initView();
-    }
 }

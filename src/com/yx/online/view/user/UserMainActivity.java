@@ -26,6 +26,12 @@ public class UserMainActivity extends BaseActivity
 	@ViewInject(R.id.title)
 	private TextView title;
 	
+	@ViewInject(R.id.register_num)
+	private TextView register_num;
+	
+	@ViewInject(R.id.ques_num)
+	private TextView ques_num;
+	
 	@ViewInject(R.id.item_layout1)
 	private LinearLayout itemLayout1;
 
@@ -153,10 +159,12 @@ public class UserMainActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		title.setText("个人中心");
+		title.setText("亚心在线");
 		// TODO Auto-generated method stub
 		User user = HealthUtil.getUserInfo();
-		loginNameTV.setText("欢迎,"+user.getName()+"医生");
+		loginNameTV.setText("欢迎您,"+user.getName()+"医生");
+		register_num.setText(user.getRegister_num());
+		ques_num.setText(user.getQues_num());
 //		if("男".equals(user.getSex()))
 //		{
 //			photo.setBackgroundResource(R.drawable.male);

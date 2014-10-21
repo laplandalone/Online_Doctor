@@ -17,7 +17,7 @@ public class HealthConstant
 //	public static final String LAUGUAGE_PACKAGE = "http://61.183.0.37:7170/apkpackages/chi_sim.traineddata";
 	public static final String IMG_PATH = Environment.getExternalStorageDirectory().getPath()+"/hbgzocr/";
 	
-	public static final String Download_path = Environment.getExternalStorageDirectory().getPath() + "/health/download/";
+	public static final String Download_path = Environment.getExternalStorageDirectory().getPath() + "/online/download/";
 	
 	public static final String imgUrl = "http://58.53.209.107:10821/ImgWeb/photo/";
 
