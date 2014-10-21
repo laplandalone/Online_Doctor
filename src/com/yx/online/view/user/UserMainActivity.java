@@ -3,9 +3,13 @@ package com.yx.online.view.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -41,8 +45,10 @@ public class UserMainActivity extends BaseActivity
 	@ViewInject(R.id.userName)
 	private TextView loginNameTV;
 
-	@ViewInject(R.id.photo)
-	private ImageView photo;
+	@ViewInject(R.id.back)
+	private ImageView back;
+	
+	
 	
 	@ViewInject(R.id.imgViewPager)
 	ImgViewPager myPager; // 图片容器
@@ -52,6 +58,25 @@ public class UserMainActivity extends BaseActivity
 
 	private List<View> listViews; // 图片组
 	
+	
+	@ViewInject(R.id.lineout1)
+	private LinearLayout layout1;
+
+	@ViewInject(R.id.lineout2)
+	private LinearLayout layout2;
+
+	@ViewInject(R.id.lineout3)
+	private LinearLayout layout3;
+
+	@ViewInject(R.id.lineout4)
+	private LinearLayout layout4;
+
+	int  imgPagerHeigth=0;
+	int wwSpace=13;
+	int space720 =30;
+	int space480 =30;
+	int space=0;
+	int imgSpace=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -63,11 +88,63 @@ public class UserMainActivity extends BaseActivity
 		initView();
 		initValue();
 		
+		WindowManager windowManager = getWindowManager();
+		Display display = windowManager.getDefaultDisplay();
+		int screenWidth = display.getWidth();
+		int scrrenHeight = display.getHeight();
+		Log.e("screenWidth",screenWidth+"");
+		Log.e("scrrenHeight",scrrenHeight+"");
+		
+		if(screenWidth==480)
+		{
+			imgSpace=dip2px(this, space480);
+			space=dip2px(this, space480+wwSpace);
+			imgPagerHeigth=dip2px(this, 40);//40：title高度+间隔高度
+			
+		}else
+		{
+			imgSpace=dip2px(this, space720);
+			space=dip2px(this, space720+wwSpace);
+			imgPagerHeigth=dip2px(this, 30);//30:title高度+间隔高度
+		}
+		int imgWhith=(screenWidth-space)/2;
+		int imgHeight=imgWhith*200/310;
+		
+		LinearLayout.LayoutParams layoutLayoutParam = new LinearLayout.LayoutParams(imgWhith, imgHeight);
+		
+		LinearLayout.LayoutParams layoutLayoutParam1 = new LinearLayout.LayoutParams(imgWhith, imgHeight);
+		
+		LinearLayout.LayoutParams layoutLayoutParam3 = new LinearLayout.LayoutParams(imgWhith, imgHeight);
+		
+		LinearLayout.LayoutParams layoutLayoutParam4 = new LinearLayout.LayoutParams(imgWhith, imgHeight);
+		
+		layoutLayoutParam1.setMargins(imgSpace/2,0,0, 0);//设置边距
+		layoutLayoutParam3.setMargins(0,imgSpace/2,0, 0);//设置边距
+		layoutLayoutParam4.setMargins(imgSpace/2,imgSpace/2,0, 0);//设置边距
+		
+		layout1.setLayoutParams(layoutLayoutParam);
+		layout2.setLayoutParams(layoutLayoutParam1);
+		layout3.setLayoutParams(layoutLayoutParam3);
+		layout4.setLayoutParams(layoutLayoutParam4);
+		
 		initViewPager();
 		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
 				R.drawable.pager_select, R.drawable.pager_item);
 	}
 
+	public static int dip2px(Context context, float dipValue)
+	{
+		final float scale = context.getResources().getDisplayMetrics().density;
+		return (int) (dipValue * scale + 0.5f);
+	}
+
+	public static int px2dip(Context context, float pxValue)
+	{
+		final float scale = context.getResources().getDisplayMetrics().density;
+		return (int) (pxValue / scale + 0.5f);
+	}
+
+	
 	/**
 	 * 初始化图片
 	 */
@@ -80,29 +157,21 @@ public class UserMainActivity extends BaseActivity
 		for(int i = 0; i < imageResId.length; i++)
 		{
 			ImageView imageView = new ImageView(this);
-//			bitmapUtils.configDefaultLoadingImage(R.drawable.default_loading_img);
-//			bitmapUtils.configDefaultLoadFailedImage(R.drawable.load_failure);
 			imageView.setBackgroundResource(imageResId[i]);
 			imageView.setScaleType(ScaleType.CENTER_CROP);
 			listViews.add(imageView);
 			
 		}
 	}
-	@OnClick(R.id.health_data_lay)
-	public void toMyHealth(View v)
-	{
-//		Intent intent = new Intent(UserMainActivity.this, MyHealthActivity.class);
-//		startActivity(intent);
-	}
-
-	@OnClick(R.id.item_layout1)
+	
+	@OnClick(R.id.lineout1)
 	public void toMyOrder(View v)
 	{
 		Intent intent = new Intent(UserMainActivity.this, ExpertListActivity.class);
 		startActivity(intent);
 	}
 
-	@OnClick(R.id.item_layout2)
+	@OnClick(R.id.lineout2)
 	public void toMyQuestion(View v)
 	{
 		Intent intent = new Intent(UserMainActivity.this, QuestionActivity.class);
@@ -115,14 +184,6 @@ public class UserMainActivity extends BaseActivity
 	{
 //		Intent intent = new Intent(UserMainActivity.this, UserUpdateActivity.class);
 //		startActivityForResult(intent, 0);
-	}
-
-	@OnClick(R.id.back)
-	public void toHome(View v)
-	{
-//		Intent intent = new Intent(UserMainActivity.this, MainPageActivity.class);
-//		startActivity(intent);
-//		exit();
 	}
 
 	@OnClick(R.id.outLogin)
@@ -165,6 +226,7 @@ public class UserMainActivity extends BaseActivity
 		loginNameTV.setText("欢迎您,"+user.getName()+"医生");
 		register_num.setText(user.getRegister_num());
 		ques_num.setText(user.getQues_num());
+		back.setVisibility(View.GONE);
 //		if("男".equals(user.getSex()))
 //		{
 //			photo.setBackgroundResource(R.drawable.male);
