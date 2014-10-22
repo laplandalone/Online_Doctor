@@ -90,13 +90,6 @@ public class MyTalkActivity extends BaseActivity
 		exit();
 	}
 	
-	@OnClick(R.id.diplay)
-	public void diplay(View v)
-	{
-		RequestParams param = webInterface.updateQuestionDisplay(id, display);
-		invokeWebServer(param, DISPLAY);
-	}
-	
 	@Override
 	protected void initView()
 	{

@@ -11,9 +11,9 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.ImageView.ScaleType;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -224,8 +224,18 @@ public class UserMainActivity extends BaseActivity
 		// TODO Auto-generated method stub
 		User user = HealthUtil.getUserInfo();
 		loginNameTV.setText("欢迎您,"+user.getName()+"医生");
-		register_num.setText(user.getRegister_num());
-		ques_num.setText(user.getQues_num());
+		String num1=user.getRegister_num();
+		String num2=user.getQues_num();
+		if(num1==null || "".equals(num1))
+		{
+			num1="0";
+		}
+		if(num2==null || "".equals(num2))
+		{
+			num2="0";
+		}
+		register_num.setText(num1);
+		ques_num.setText(num2);
 		back.setVisibility(View.GONE);
 //		if("男".equals(user.getSex()))
 //		{

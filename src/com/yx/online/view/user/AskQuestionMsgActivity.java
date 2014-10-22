@@ -41,29 +41,8 @@ public class AskQuestionMsgActivity extends BaseActivity
 	@ViewInject(R.id.content)
 	private EditText contentET;
 
-	@ViewInject(R.id.layout1)
-	private LinearLayout imagesLayout;
-
 	@ViewInject(R.id.back)
 	private ImageView back;
-	
-	@ViewInject(R.id.img1)
-	private ImageView img1;
-
-	@ViewInject(R.id.img2)
-	private ImageView img2;
-
-	@ViewInject(R.id.img3)
-	private ImageView img3;
-
-	@ViewInject(R.id.frm1)
-	private FrameLayout frm1;
-
-	@ViewInject(R.id.frm2)
-	private FrameLayout frm2;
-
-	@ViewInject(R.id.frm3)
-	private FrameLayout frm3;
 
 	String userId;
 	String doctorId;
@@ -87,17 +66,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 		initView();
 		initValue();
 	}
-
-	@Override
-	protected void onSaveInstanceState(Bundle outState)
-	{
-		HealthUtil.LOG_D(getClass(), "onSaveInstanceState---->");
-		outState.putBoolean("is_restart", false);
-		outState.putStringArrayList("image_url", imagesUrl);
-		outState.putString("pic_name", mPicName);
-		super.onSaveInstanceState(outState);
-	}
-
+	
 	@Override
 	protected void initView()
 	{
