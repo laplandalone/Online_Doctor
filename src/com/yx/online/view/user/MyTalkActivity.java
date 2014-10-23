@@ -8,9 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -30,7 +27,6 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.yx.online.adapter.TalkAdapter;
 import com.yx.online.base.BaseActivity;
 import com.yx.online.doctor.R;
-import com.yx.online.model.User;
 import com.yx.online.model.UserQuestionT;
 import com.yx.online.tools.HealthConstant;
 import com.yx.online.tools.HealthUtil;
@@ -55,6 +51,12 @@ public class MyTalkActivity extends BaseActivity
 	@ViewInject(R.id.ask_again_text)
 	private EditText askAgain;
 	
+	@ViewInject(R.id.b1)
+	private  Button show;
+	
+	@ViewInject(R.id.b2)
+	private  Button noShow;
+	
 	private ListView list;
 	private String userId;
 	private String phone;
@@ -64,10 +66,7 @@ public class MyTalkActivity extends BaseActivity
     private List<UserQuestionT> questionTs;
     private TalkAdapter adapter;
     private String id;
-    private String display="private";
-	private RadioGroup radioGroup;
-	private RadioButton show;
-	private RadioButton noShow;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -94,36 +93,35 @@ public class MyTalkActivity extends BaseActivity
 	protected void initView()
 	{
 	
-		radioGroup = (RadioGroup) findViewById(R.id.RG);
-		show = (RadioButton) findViewById(R.id.b1);
-		noShow = (RadioButton) findViewById(R.id.b2);
 		// TODO Auto-generated method stub
 		this.title.setText(R.string.ask_online_temp45);
 		inputImg.setVisibility(View.GONE);
 		askAgain.setVisibility(View.VISIBLE);
 		this.id= getIntent().getStringExtra("id"); 
-		
-	    radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() 
-	    {
-			
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				if (checkedId == show.getId())
-				{
-					display = "private";
-				} else if (checkedId == noShow.getId()) 
-				{
-					display = "public";
-				}
-				 dialog.setMessage("正在提交,请稍后...");
-				 dialog.show();
-				RequestParams param = webInterface.updateQuestionDisplay(id, display);
-				invokeWebServer(param, DISPLAY);
-			}
-		});
-		
 	}
 
+	@OnClick(R.id.b1)
+	public void show(View v)
+	{
+		dialog.setMessage("正在提交,请稍后...");
+		dialog.show();
+		RequestParams param = webInterface.updateQuestionDisplay(id, "private");
+		invokeWebServer(param, DISPLAY);
+		show.setBackgroundResource(R.drawable.radio_selecct);
+		noShow.setBackgroundResource(R.drawable.radio);
+	}
+	
+	@OnClick(R.id.b2)
+	public void noshow(View v)
+	{
+		dialog.setMessage("正在提交,请稍后...");
+		dialog.show();
+		RequestParams param = webInterface.updateQuestionDisplay(id, "public");
+		invokeWebServer(param, DISPLAY);
+		show.setBackgroundResource(R.drawable.radio);
+		noShow.setBackgroundResource(R.drawable.radio_selecct);
+	}
+	
 	@OnClick(R.id.submit_question)
 	public void submitQuestion(View v)
 	{
@@ -263,8 +261,10 @@ public class MyTalkActivity extends BaseActivity
 					{
 						if("public".equals(t.getAuthType()))
 						{
-							show.setChecked(true);
-							noShow.setChecked(false);
+							show.setBackgroundResource(R.drawable.radio_selecct);
+						}else
+						{
+							noShow.setBackgroundResource(R.drawable.radio_selecct);
 						}
 					}
 				}

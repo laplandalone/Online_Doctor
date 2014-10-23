@@ -9,26 +9,27 @@
         android:layout_height="50.0dip"
         android:gravity="left" >
       <TextView android:layout_marginLeft="13.0dip" android:layout_weight="2.0" android:textSize="16.0sp" android:layout_gravity="center_vertical" android:textColor="@color/TextColorGreen" android:id="@+id/userName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="刘波"  />
-      <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginRight="13.0dip"
-        android:checkedButton="@+id/b2"
-        android:id="@+id/RG">
+   
 
-    <RadioButton 
-        android:text="可见"
+    <Button 
         android:id="@+id/b1"
-        android:button="@drawable/radio_button_question"
+        android:layout_width="20.0dip"     
+        android:layout_height="20.0dip" 
+        android:layout_gravity="center_vertical" 
+        android:background="@drawable/radio_button_question"
     />
-     <RadioButton 
-        android:text="不可见"
+      <TextView    android:textSize="16.0sp" android:layout_gravity="center_vertical"   android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="可见"  />
+    
+      <Button 
         android:id="@+id/b2"
-        android:button="@drawable/radio_button_question"
+       android:layout_width="20.0dip"     
+        android:layout_height="20.0dip" 
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="13.0dip"
+        android:background="@drawable/radio_button_question"
     />
-</RadioGroup>
+       <TextView   android:textSize="16.0sp" android:layout_gravity="center_vertical"   android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="不可见"  android:layout_marginRight="13.0dip" />
+ 
     </LinearLayout>
     <ImageView android:background="@drawable/nav_horizontal_line"  android:layout_width="fill_parent" android:layout_height="wrap_content" /> 
     <ListView android:scrollbarStyle="insideInset" android:id="@+id/talklist" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="7.0dip" android:listSelector="#00000000" android:transcriptMode="normal" android:cacheColorHint="#00000000" android:divider="@null" android:layout_weight="0.1" android:fastScrollEnabled="true" />

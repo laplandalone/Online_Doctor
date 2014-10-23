@@ -223,7 +223,7 @@ public class UserMainActivity extends BaseActivity
 		title.setText("亚心在线");
 		// TODO Auto-generated method stub
 		User user = HealthUtil.getUserInfo();
-		loginNameTV.setText("欢迎您,"+user.getName()+"医生");
+		loginNameTV.setText("欢迎您,"+user.getName()+"医生!");
 		String num1=user.getRegister_num();
 		String num2=user.getQues_num();
 		if(num1==null || "".equals(num1))
