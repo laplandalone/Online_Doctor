@@ -170,9 +170,9 @@ public class LoginActivity extends BaseActivity
 	{
 		String telephone = userName.getText().toString().trim();
 		String passwordT = password.getText().toString().trim();
-		if (!HealthUtil.isMobileNum(telephone))
+		if ("".equals(telephone))
 		{
-			HealthUtil.infoAlert(LoginActivity.this, "手机号码为空或格式错误!");
+			HealthUtil.infoAlert(LoginActivity.this, "用户名为空");
 			return;
 		}
 		
