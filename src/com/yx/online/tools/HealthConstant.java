@@ -22,4 +22,6 @@ public class HealthConstant
 	public static final String imgUrl = "http://58.53.209.107:10821/ImgWeb/photo/";
 
 	public static final String question_img_Url = "http://58.53.209.107:10821";
+	
+	public static  final String PUSH_KEY = "M0fnhL6RTLrVH7CDkmWxdQ1x"; //push key
 }

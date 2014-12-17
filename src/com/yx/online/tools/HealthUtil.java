@@ -142,6 +142,46 @@ public class HealthUtil {
 			}
 			return userInfo;
 		}
+		
+		public static void writePushChannelId(String flag)
+		{
+			userPreferences.edit().putString("pushChannelId", flag).commit();
+		}
+		
+		public static String readPushChannelId() 
+		{
+			return userPreferences.getString("pushChannelId", "");
+		}
+		
+		public static void writePushUserlId(String flag)
+		{
+			userPreferences.edit().putString("pushUserlId", flag).commit();
+		}
+		
+		public static String readPushUserId() 
+		{
+			return userPreferences.getString("pushUserlId", "");
+		}
+		
+		public static void writeBindPush(boolean flag)
+		{
+			userPreferences.edit().putBoolean("isBind", flag).commit();
+		}
+		
+		public static boolean readBindPush() 
+		{
+			return userPreferences.getBoolean("isBind", false);
+		}
+		
+		public static void writeUserId(String info)
+		{
+			userPreferences.edit().putString("userId", info).commit();
+		}
+		
+		public static String readUserId() 
+		{
+			return userPreferences.getString("userId", "");
+		}
 	
 		public static String getVersionName() {
 			  PackageManager pm = mContext.getPackageManager();

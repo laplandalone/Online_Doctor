@@ -84,8 +84,8 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	{
 		text1.setTextColor(this.getResources().getColor(R.color.black));
 		text2.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
-		ans_line.setBackgroundResource(R.drawable.nav_horizontal_line);
-		noans_line.setBackgroundResource(R.drawable.black_line);
+		ans_line.setVisibility(View.GONE);
+		noans_line.setVisibility(View.VISIBLE);
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		RequestParams param = webInterface.getDoctorQuestionsByType(HealthUtil.readDoctorId(),"noans");
@@ -97,8 +97,8 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	{
 		text1.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
 		text2.setTextColor(this.getResources().getColor(R.color.black));
-		ans_line.setBackgroundResource(R.drawable.black_line);
-		noans_line.setBackgroundResource(R.drawable.nav_horizontal_line);
+		ans_line.setVisibility(View.VISIBLE);
+		noans_line.setVisibility(View.GONE);
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		RequestParams param = webInterface.getDoctorQuestionsByType(HealthUtil.readDoctorId(),"ans");
@@ -129,10 +129,8 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		
 		text1.setTextColor(this.getResources().getColor(R.color.black));
 		text2.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
-		ans_line.setBackgroundResource(R.drawable.nav_horizontal_line);
-		noans_line.setBackgroundResource(R.drawable.black_line);
-		dialog.setMessage("正在加载,请稍后...");
-		dialog.show();
+		 
+	 
 		RequestParams param = webInterface.getDoctorQuestionsByType(HealthUtil.readDoctorId(),"noans");
 		invokeWebServer(param, ADD_QUESTION);
 		submitBtn.setVisibility(View.GONE);
@@ -246,7 +244,6 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		MyQuestionListAdapter adapter = new MyQuestionListAdapter(QuestionActivity.this, questionTs);
 		this.list.setAdapter(adapter);
 		this.list.setOnItemClickListener(this);
-		adapter.notifyDataSetChanged();
 		if(this.questionTs.size()==0)
 		{
 			layout.setVisibility(View.VISIBLE);

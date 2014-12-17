@@ -1,5 +1,8 @@
 package com.yx.online.view.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -8,11 +11,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ImageView.ScaleType;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -21,6 +30,7 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.yx.online.adapter.ImgViewPager;
 import com.yx.online.base.BaseActivity;
 import com.yx.online.doctor.R;
 import com.yx.online.model.User;
@@ -54,21 +64,65 @@ public class LoginActivity extends BaseActivity
 	private boolean remberPswFlag = false;
 	private boolean loginAutoFlag = false;
 
+	@ViewInject(R.id.imgViewPager)
+	ImgViewPager myPager; // 图片容器
+
+	@ViewInject(R.id.vb)
+	LinearLayout ovalLayout; // 圆点容器
+	
+	private List<View> listViews; // 图片组
+	private BitmapUtils bitmapUtils;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_sign_in);
+		bitmapUtils = new BitmapUtils(this);
+		bitmapUtils.closeCache();
 		ViewUtils.inject(this);
 		addActivity(this);
 		initView();
 		initValue();
+		bindPush();
 		Intent intent = new Intent(this, CheckNewVersion.class);
 		intent.putExtra("flag", "auto");
 		startService(intent);
 	}
 
+	/**
+	 * bind push server 
+	 * @param 
+	 * @return void
+	 * author xuchun
+	 */
+    private void bindPush() {
+    	if (!HealthUtil.readBindPush()) {
+    		HealthUtil.LOG_D(getClass(), "bind push server ing...");
+    		PushManager.startWork(this, PushConstants.LOGIN_TYPE_API_KEY, HealthConstant.PUSH_KEY);
+    	}
+    }
+	
+	/**
+	 * 初始化图片
+	 */
+	private void initViewPager()
+	{
+		
+		listViews = new ArrayList<View>();
+		
+		int[] imageResId = new int[]
+		{ R.drawable.login_a, R.drawable.login_b, R.drawable.login_c};
+		for (int i = 0; i < imageResId.length; i++)
+		{
+			ImageView imageView = new ImageView(this);
+			imageView.setImageResource(imageResId[i]);
+			imageView.setScaleType(ScaleType.CENTER_CROP);
+			listViews.add(imageView);
+		}
+	}
+	
+	
 	@OnClick(R.id.rember_psw)
 	public void remberPsw(View v)
 	{
@@ -138,6 +192,9 @@ public class LoginActivity extends BaseActivity
 	{
 		// TODO Auto-generated method stub
 		title.setText("用户登录");
+		initViewPager();// 初始化图片
+		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
+				R.drawable.pager_select, R.drawable.pager_item);
 	}
 
 	@Override
@@ -290,6 +347,7 @@ public class LoginActivity extends BaseActivity
 					HealthUtil.writeDoctorId(user.getDoctor_id());
 					HealthUtil.infoAlert(LoginActivity.this, "登录成功");
 				    Intent intent = new Intent(LoginActivity.this,UserMainActivity.class);
+				    intent.putExtra("channel", "login");
 				    startActivity(intent);
 					break;
 				}else

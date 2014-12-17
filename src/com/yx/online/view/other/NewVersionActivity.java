@@ -141,9 +141,8 @@ public class NewVersionActivity extends BaseActivity implements OnClickListener{
 
 	@Override
 	public void onBackPressed() {
-		if ("N".equalsIgnoreCase(mForceUpdateFlag)) {
+		
 			super.onBackPressed();
-		}
 	}
 	
 	@Override

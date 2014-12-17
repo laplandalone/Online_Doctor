@@ -4,22 +4,30 @@
    <include layout="@layout/common_title" />
    
     <LinearLayout  android:orientation="horizontal" android:id="@id/item_layout3"  android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <LinearLayout   android:id="@+id/ans"  android:gravity="center"  android:layout_width="fill_parent" android:layout_height="wrap_content"  android:layout_weight="1.0">
-                        <LinearLayout  android:orientation="vertical" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
+                    <LinearLayout   android:id="@+id/ans"    android:layout_width="fill_parent" android:layout_height="wrap_content"  android:layout_weight="1.0">
 
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="40.0dip"
+                            android:layout_marginTop="10.0dip" >
                             <TextView
                                 android:id="@+id/text1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="已回复"
                                 android:textColor="@color/black"
-                                android:gravity="center_horizontal"
+                                android:layout_centerHorizontal="true"
                                 android:textSize="16.0sp" />
-                              <ImageView android:layout_marginTop="10.0dip" android:id="@+id/ans_line" android:background="@drawable/black_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                        </LinearLayout>
+                              <ImageView  android:visibility="gone" android:layout_alignParentBottom="true"  android:id="@+id/ans_line"  android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" android:layout_marginTop="10.0dip"    android:background="@drawable/black_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                              <ImageView  android:layout_alignParentBottom="true"  android:background="@drawable/nav_horizontal_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </RelativeLayout>
                     </LinearLayout>
-                      <LinearLayout android:id="@+id/noans"  android:gravity="center"  android:layout_width="fill_parent" android:layout_height="wrap_content"   android:layout_weight="1.0">
-                        <LinearLayout android:orientation="vertical" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
+                    
+                      <LinearLayout android:id="@+id/noans"    android:layout_width="fill_parent" android:layout_height="wrap_content"   android:layout_weight="1.0">
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="40.0dip"
+                            android:layout_marginTop="10.0dip" >
 
                             <TextView
                                 android:id="@+id/text2"
@@ -27,10 +35,11 @@
                                 android:layout_height="wrap_content"
                                 android:text="未回复"
                                 android:textColor="@color/TextColorGreen"
-                                android:gravity="center_horizontal"
+                                android:layout_centerHorizontal="true"
                                 android:textSize="16.0sp" />
-                                <ImageView android:layout_marginTop="10.0dip" android:id="@+id/noans_line" android:background="@drawable/nav_horizontal_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                        </LinearLayout>
+                                  <ImageView android:layout_alignParentBottom="true"   android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip"   android:layout_marginTop="10.0dip" android:id="@+id/noans_line" android:background="@drawable/black_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                                  <ImageView  android:layout_alignParentBottom="true"  android:background="@drawable/nav_horizontal_line"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>
    
