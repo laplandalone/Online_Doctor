@@ -11,9 +11,11 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.http.HttpHandler;
@@ -119,4 +121,20 @@ public abstract class BaseActivity extends FragmentActivity {
             return false;  
         }  
     }; 
+    
+	public static OnFocusChangeListener onFocusAutoClearHintListener = new OnFocusChangeListener() {
+		@Override
+		public void onFocusChange(View v, boolean hasFocus) {
+			EditText textView = (EditText) v;
+			String hint;
+			if (hasFocus) {
+				hint = textView.getHint().toString();
+				textView.setTag(hint);
+				textView.setHint("");
+			} else {
+				hint = textView.getTag().toString();
+				textView.setHint(hint);
+			}
+		}
+	};
 }

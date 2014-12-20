@@ -130,6 +130,10 @@ public class MyMessageReceiver extends FrontiaPushMessageReceiver{
 		 String customParam=jsonObject.get("custom_param").toString();
 		 String[] ids = userIds.split(",");
 		 User user = HealthUtil.getUserInfo();
+		 if(user==null)
+		 {
+			 return;
+		 }
 		 String userId=user.getDoctor_id();
 		 if("ques".equals(msgType))
 		 {

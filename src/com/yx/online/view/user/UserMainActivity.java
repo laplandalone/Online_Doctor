@@ -36,12 +36,16 @@ import com.yx.online.model.User;
 import com.yx.online.tools.HealthConstant;
 import com.yx.online.tools.HealthUtil;
 import com.yx.online.view.order.ExpertListActivity;
+import com.yx.online.view.patient.MyPatientActivity;
 import com.yx.online.view.user.LoginActivity.MineRequestCallBack;
 
 public class UserMainActivity extends BaseActivity
 {
 	@ViewInject(R.id.title)
 	private TextView title;
+	
+	@ViewInject(R.id.editUser)
+	private TextView editUser;
 	
 	@ViewInject(R.id.register_num)
 	private TextView register_num;
@@ -202,14 +206,15 @@ public class UserMainActivity extends BaseActivity
 	@OnClick(R.id.lineout4)
 	public void toMyPatient(View v)
 	{
-		HealthUtil.infoAlert(UserMainActivity.this, "正在建设中...");
+		Intent intent = new Intent(UserMainActivity.this, MyPatientActivity.class);
+		startActivity(intent);
 	}
 
-	@OnClick(R.id.user_info_detail)
+	@OnClick(R.id.editUser)
 	public void updateUser(View v)
 	{
-//		Intent intent = new Intent(UserMainActivity.this, UserUpdateActivity.class);
-//		startActivityForResult(intent, 0);
+		Intent intent = new Intent(UserMainActivity.this, UserUpdateActivity.class);
+		startActivity(intent);
 	}
 
 	@OnClick(R.id.outLogin)
@@ -247,6 +252,7 @@ public class UserMainActivity extends BaseActivity
 	protected void initView()
 	{
 		title.setText("亚心在线");
+		editUser.setVisibility(View.VISIBLE);
 		// TODO Auto-generated method stub
 		User user = HealthUtil.getUserInfo();
 		loginNameTV.setText("欢迎您,"+user.getName()+"医生!");

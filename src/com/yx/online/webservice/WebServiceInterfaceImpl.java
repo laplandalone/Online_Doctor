@@ -1,6 +1,7 @@
 package com.yx.online.webservice;
 
 import com.lidroid.xutils.http.RequestParams;
+import com.lurencun.android.utils.ParamUtil;
 import com.yx.online.tools.HealthUtil;
 
 
@@ -186,5 +187,14 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	@Override
 	public RequestParams doctorRegisterById(String doctorId) {
 		return HealthUtil.getRequestParams("BUS20032", new String[]{"doctorId"},new Object[]{doctorId });
+	}
+	@Override
+	public RequestParams getPatientVisits() {
+		return ParamUtil.getRequestParams("BUS3001", new String[]{},new Object[]{});
+	}
+
+	@Override
+	public RequestParams updateManager(String manager) {
+		return ParamUtil.getRequestParams("BUS20047", new String[]{"manager"},new Object[]{manager});
 	}
 }

@@ -68,4 +68,8 @@ public interface IWebServiceInterface {
 	public RequestParams deleteDoctorCopy(String id);
 	
 	public RequestParams doctorRegisterById(String doctorId);
+	
+	public RequestParams getPatientVisits();
+	
+	public RequestParams updateManager(String manager);
 }
