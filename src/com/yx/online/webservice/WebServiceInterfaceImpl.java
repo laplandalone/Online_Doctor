@@ -197,4 +197,9 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	public RequestParams updateManager(String manager) {
 		return ParamUtil.getRequestParams("BUS20047", new String[]{"manager"},new Object[]{manager});
 	}
+
+	@Override
+	public RequestParams addWakeT(String wakeTstr) {
+		return ParamUtil.getRequestParams("BUS20048", new String[]{"wakeTstr"},new Object[]{wakeTstr});
+	}
 }

@@ -40,6 +40,9 @@ import com.yx.online.view.other.CheckNewVersion;
 
 public class LoginActivity extends BaseActivity
 {
+	@ViewInject(R.id.back)
+	private ImageView back;
+	
 	@ViewInject(R.id.title)
 	private TextView title;
 	
@@ -192,6 +195,7 @@ public class LoginActivity extends BaseActivity
 	{
 		// TODO Auto-generated method stub
 		title.setText("用户登录");
+		back.setVisibility(View.GONE);
 		initViewPager();// 初始化图片
 		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
 				R.drawable.pager_select, R.drawable.pager_item);

@@ -76,22 +76,31 @@ public class PatientVisitListAdapter  extends BaseAdapter
 		
 		 PatientVisitT patientVisitT = patientVisitTs.get(position);
 		 String visitType = patientVisitT.getVisitType();
+		 String  copyFlag=patientVisitT.getCopyFlag();
 		 textView.setText(patientVisitT.getVisitName());
 		 textView3.setText(visitType);
 		 textView4.setText(patientVisitT.getVisitId());
-		 hander.setTag(patientVisitT.getVisitId());
-		 hander.setOnClickListener(new OnClickListener() {
-	     	
-			@Override
-			public void onClick(View v)
-			{
-				// TODO Auto-generated method stub
-				Intent it = new Intent(mContext,VisitTalkActivity.class);
-				String visitId=(String) v.getTag();
-				it.putExtra("visitId",visitId);
-				mContext.startActivity(it);
-			}
-		});
+		 
+		 if("Y".equals(copyFlag))
+		 {
+			 hander.setText("已诊断");
+		 }else
+		 {
+			 hander.setTag(patientVisitT);
+			 hander.setOnClickListener(new OnClickListener()
+			 {
+				@Override
+				public void onClick(View v)
+				{
+					// TODO Auto-generated method stub
+					Intent it = new Intent(mContext,VisitTalkActivity.class);
+					PatientVisitT pVT =(PatientVisitT) v.getTag();
+					it.putExtra("visitId",pVT.getVisitId());
+					it.putExtra("userId",pVT.getPatientId());
+					mContext.startActivity(it);
+				}
+			});
+		 }
 		return convertView;
 	}
 
