@@ -13,5 +13,5 @@
     </LinearLayout>
     <TextView  android:textSize="16.0sp" android:textColor="@color/TextColorGreen" android:gravity="center" android:id="@+id/text4"   android:layout_width="0.0dip" android:layout_height="fill_parent"  android:layout_weight="1.0" />
     <TextView  android:textSize="16.0sp" android:textColor="@color/TextColorGreen" android:gravity="center" android:id="@+id/text3"   android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0"/>
-    <TextView  android:textSize="16.0sp" android:textColor="@color/TextColorGreen" android:gravity="center" android:id="@+id/state"  android:layout_width="0.0dip" android:layout_height="fill_parent"  android:layout_weight="1.0" android:text="诊断" />
+    <TextView  android:textSize="16.0sp" android:textColor="@color/TextColorGreen" android:gravity="center" android:id="@+id/hander"  android:layout_width="0.0dip" android:layout_height="fill_parent"  android:layout_weight="1.0" android:text="诊断" />
 </LinearLayout>

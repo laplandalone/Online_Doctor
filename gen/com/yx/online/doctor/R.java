@@ -549,6 +549,7 @@ containing a value of this type.
         public static final int guidePages=0x7f09001e;
         public static final int guide_img=0x7f09031b;
         public static final int hand_login=0x7f0902c5;
+        public static final int hander=0x7f09035e;
         public static final int head_arrowImageView=0x7f09028f;
         public static final int head_contentLayout=0x7f09028e;
         public static final int head_lastUpdatedTextView=0x7f090292;
@@ -955,7 +956,6 @@ containing a value of this type.
         public static final int sms_login=0x7f0902c6;
         public static final int soft_update=0x7f090279;
         public static final int start=0x7f09032b;
-        public static final int state=0x7f09035e;
         public static final int state_ment=0x7f0902ac;
         public static final int status=0x7f09033a;
         public static final int step_1=0x7f0900ab;
@@ -1157,8 +1157,10 @@ containing a value of this type.
         public static final int user_order_list_item=0x7f030015;
         public static final int user_password=0x7f030016;
         public static final int user_sign_in=0x7f030017;
-        public static final int xlistview_footer=0x7f030018;
-        public static final int xlistview_header=0x7f030019;
+        public static final int visit_button=0x7f030018;
+        public static final int visit_talk=0x7f030019;
+        public static final int xlistview_footer=0x7f03001a;
+        public static final int xlistview_header=0x7f03001b;
     }
     public static final class raw {
         public static final int alarm=0x7f050000;

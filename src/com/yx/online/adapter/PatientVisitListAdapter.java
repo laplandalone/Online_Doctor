@@ -3,8 +3,10 @@ package com.yx.online.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import com.lidroid.xutils.BitmapUtils;
 import com.yx.online.doctor.R;
 import com.yx.online.model.PatientVisitT;
+import com.yx.online.view.user.VisitTalkActivity;
 
 public class PatientVisitListAdapter  extends BaseAdapter
 {
@@ -67,7 +70,7 @@ public class PatientVisitListAdapter  extends BaseAdapter
 		
 		 convertView = LayoutInflater.from(mContext).inflate(R.layout.patient_visit_item, null);
 		 TextView textView =  (TextView)convertView.findViewById( R.id.text1);
-		 TextView textView2 = (TextView)convertView.findViewById( R.id.text2);
+		 TextView hander = (TextView)convertView.findViewById( R.id.hander);
 		 TextView textView3 = (TextView)convertView.findViewById( R.id.text3);
 		 TextView textView4 = (TextView)convertView.findViewById( R.id.text4);
 		
@@ -76,6 +79,19 @@ public class PatientVisitListAdapter  extends BaseAdapter
 		 textView.setText(patientVisitT.getVisitName());
 		 textView3.setText(visitType);
 		 textView4.setText(patientVisitT.getVisitId());
+		 hander.setTag(patientVisitT.getVisitId());
+		 hander.setOnClickListener(new OnClickListener() {
+	     	
+			@Override
+			public void onClick(View v)
+			{
+				// TODO Auto-generated method stub
+				Intent it = new Intent(mContext,VisitTalkActivity.class);
+				String visitId=(String) v.getTag();
+				it.putExtra("visitId",visitId);
+				mContext.startActivity(it);
+			}
+		});
 		return convertView;
 	}
 

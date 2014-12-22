@@ -519,6 +519,7 @@ int id guahao_his_commit_pay 0x7f090174
 int id guidePages 0x7f09001e
 int id guide_img 0x7f09031b
 int id hand_login 0x7f0902c5
+int id hander 0x7f09035e
 int id head_arrowImageView 0x7f09028f
 int id head_contentLayout 0x7f09028e
 int id head_lastUpdatedTextView 0x7f090292
@@ -925,7 +926,6 @@ int id smoke_year 0x7f0902c7
 int id sms_login 0x7f0902c6
 int id soft_update 0x7f090279
 int id start 0x7f09032b
-int id state 0x7f09035e
 int id state_ment 0x7f0902ac
 int id status 0x7f09033a
 int id step_1 0x7f0900ab
@@ -1125,8 +1125,10 @@ int layout user_login_main 0x7f030014
 int layout user_order_list_item 0x7f030015
 int layout user_password 0x7f030016
 int layout user_sign_in 0x7f030017
-int layout xlistview_footer 0x7f030018
-int layout xlistview_header 0x7f030019
+int layout visit_button 0x7f030018
+int layout visit_talk 0x7f030019
+int layout xlistview_footer 0x7f03001a
+int layout xlistview_header 0x7f03001b
 int raw alarm 0x7f050000
 int raw beep 0x7f050001
 int raw config 0x7f050002
