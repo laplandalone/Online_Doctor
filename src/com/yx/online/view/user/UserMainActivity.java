@@ -206,6 +206,7 @@ public class UserMainActivity extends BaseActivity
 	@OnClick(R.id.lineout4)
 	public void toMyPatient(View v)
 	{
+//		HealthUtil.infoAlert(UserMainActivity.this, "正在建设中...");
 		Intent intent = new Intent(UserMainActivity.this, MyPatientActivity.class);
 		startActivity(intent);
 	}

@@ -15,7 +15,7 @@ public class WakeT implements java.io.Serializable {
 	private String wakeType="notice";
 	private String wakeValue;
 	private String wakeContent;
-	private Date createDate;
+	private String createDate;
 	private String wakeDate;
 	private String state="00A";
 	private String wakeName;
@@ -30,7 +30,7 @@ public class WakeT implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public WakeT(BigDecimal wakeId, String wakeType, Date createDate,
+	public WakeT(BigDecimal wakeId, String wakeType, String createDate,
 			String wakeDate, String state, String wakeFlag) {
 		this.wakeId = wakeId;
 		this.wakeType = wakeType;
@@ -42,7 +42,7 @@ public class WakeT implements java.io.Serializable {
 
 	/** full constructor */
 	public WakeT(BigDecimal wakeId, String wakeType, String wakeValue,
-			String wakeContent, Date createDate, String wakeDate, String state,
+			String wakeContent, String createDate, String wakeDate, String state,
 			String wakeName, String wakeFlag, String userId) {
 		this.wakeId = wakeId;
 		this.wakeType = wakeType;
@@ -90,11 +90,12 @@ public class WakeT implements java.io.Serializable {
 		this.wakeContent = wakeContent;
 	}
 
-	public Date getCreateDate() {
-		return this.createDate;
+
+	public String getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 

@@ -21,7 +21,7 @@ public class UserQuestionT implements java.io.Serializable {
 	private String createDate;
 	private String name;
 	private String teamId;
-	private String hospitalId;
+	private String hospitalId="102";
 	private String imgUrl;
 	// Constructors
 

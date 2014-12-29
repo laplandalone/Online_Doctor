@@ -4,7 +4,7 @@
     <include layout="@layout/hospital_map_title" />
       <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
 		     <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <com.yx.online.adapter.ImgViewPager android:id="@+id/imgViewPager" android:layout_width="fill_parent" android:layout_height="140.0dip" />
+                <com.yx.online.adapter.ImgViewPager android:id="@+id/imgViewPager" android:layout_width="fill_parent" android:layout_height="180.0dip" />
                 <RelativeLayout android:layout_gravity="bottom"  android:layout_width="fill_parent" android:layout_height="wrap_content">
                     <LinearLayout  android:orientation = "horizontal" android:gravity="center" android:id="@+id/vb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
                 </RelativeLayout>

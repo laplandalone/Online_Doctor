@@ -74,4 +74,6 @@ public interface IWebServiceInterface {
 	public RequestParams updateManager(String manager);
 	
 	public RequestParams addWakeT(String wakeTstr);
+	
+	public RequestParams getUserWakeById(String visitId);
 }

@@ -1,25 +1,25 @@
 package com.yx.online.view.user;
 
-import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.lidroid.xutils.BitmapUtils;
+import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -28,10 +28,10 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.yx.online.adapter.WakeAdapter;
 import com.yx.online.base.BaseActivity;
 import com.yx.online.doctor.R;
 import com.yx.online.model.User;
-import com.yx.online.model.UserQuestionT;
 import com.yx.online.model.WakeT;
 import com.yx.online.tools.HealthConstant;
 import com.yx.online.tools.HealthUtil;
@@ -53,6 +53,9 @@ public class VisitTalkActivity extends BaseActivity
 	@ViewInject(R.id.back)
 	private ImageView back;
 
+	private ListView talklist;
+	
+	private List<WakeT> wakeTs;
 	String userId;
 	String doctorId;
 	String userTelephone;
@@ -63,6 +66,7 @@ public class VisitTalkActivity extends BaseActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.visit_talk);
+		talklist=(ListView) findViewById(R.id.talklist);
 		// TODO Auto-generated method stub
 		ViewUtils.inject(this);
 		addActivity(this);
@@ -74,6 +78,8 @@ public class VisitTalkActivity extends BaseActivity
 	protected void initView()
 	{
 		title.setText("诊断");
+		this.user = HealthUtil.getUserInfo();
+		this.doctorId = user.getDoctor_id();
 		this.visitId=getIntent().getStringExtra("visitId");
 		this.userId=getIntent().getStringExtra("userId");
 		back.setBackgroundResource(R.drawable.back);
@@ -86,10 +92,11 @@ public class VisitTalkActivity extends BaseActivity
 	@Override
 	protected void initValue()
 	{
-		// TODO Auto-generated method stub
-		this.doctorId = getIntent().getStringExtra("doctorId");
+		dialog.setMessage("正在加载,请稍后...");
+		dialog.show();
 		this.user = HealthUtil.getUserInfo();
-		
+		RequestParams param = webInterface.getUserWakeById(visitId);
+		invokeWebServer(param, GET_LIST);
 	}
 
 	@OnClick(R.id.back)
@@ -210,28 +217,51 @@ public class VisitTalkActivity extends BaseActivity
 			case ADD_QUESTION:
 				returnMsg(arg0.result, ADD_QUESTION);
 				break;
+			case GET_LIST:
+				returnMsg(arg0.result, GET_LIST);
+				break;
 			}
 		}
+	}
 
-		/*
-		 * 处理返回结果数据
-		 */
-		private void returnMsg(String json, int code)
+	/*
+	 * 处理返回结果数据
+	 */
+	private void returnMsg(String json, int code)
+	{
+		JsonParser jsonParser = new JsonParser();
+		JsonElement jsonElement = jsonParser.parse(json);
+		JsonObject jsonObject = jsonElement.getAsJsonObject();
+		switch (code)
 		{
-			JsonParser jsonParser = new JsonParser();
-			JsonElement jsonElement = jsonParser.parse(json);
-
-			JsonObject jsonObject = jsonElement.getAsJsonObject();
-			String executeType = jsonObject.get("executeType").getAsString();
-			if ("success".equals(executeType))
-			{
-				HealthUtil.infoAlert(VisitTalkActivity.this, "处理成功.");
-				finish();
-			} else
-			{
-				HealthUtil.infoAlert(VisitTalkActivity.this, "处理失败请重试.");
-			}
-
+			case GET_LIST:
+				JsonArray jsonArray = jsonObject.getAsJsonArray("returnMsg");
+				Gson gson = new Gson();
+				this.wakeTs = gson.fromJson(jsonArray, new TypeToken<List<WakeT>>()
+				{
+				}.getType());	
+				if(wakeTs.size()!=0)
+				{
+					WakeAdapter adapter = new WakeAdapter(VisitTalkActivity.this, wakeTs);
+					talklist.setAdapter(adapter);
+				}
+				 
+				
+				break;
+			case ADD_QUESTION:
+				
+				String executeType = jsonObject.get("executeType").getAsString();
+				if ("success".equals(executeType))
+				{
+					HealthUtil.infoAlert(VisitTalkActivity.this, "处理成功.");
+					finish();
+				} else
+				{
+					HealthUtil.infoAlert(VisitTalkActivity.this, "处理失败请重试.");
+				}
+				break;
+			default:
+				break;
 		}
 	}
 	@Override

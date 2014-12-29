@@ -18,7 +18,16 @@ public class PatientVisitT implements java.io.Serializable {
 	private String state;
 	private String createDate;
 	private String copyFlag;
+	private String name;
 	// Constructors
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getCopyFlag() {
 		return copyFlag;

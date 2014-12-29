@@ -184,11 +184,27 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
 		// TODO Auto-generated method stub
-//		Intent intent = new Intent(ExpertListActivity.this,ExpertDetailActivity.class);
-//		OrderExpert expert =expertList.getOrders().get(position-1);
-//		Bundle bundle = new Bundle();
-//		bundle.putSerializable("expert", expert);
-//		intent.putExtras(bundle);
-//		startActivity(intent);
+		Intent intent = new Intent(PatientVisitListActivity.this,VisitDetailActivity.class);
+		PatientVisitT patientVisitT = patientVisitTs.get(position);
+		String visitId=patientVisitT.getVisitId();
+		String copyFlag=patientVisitT.getCopyFlag();
+//		String url="http://www.hiseemedical.com:10821/visit/patientVisit.do?method=qryVisitDetail&visitId="+patientVisitT.getVisitId();
+//		String url="http://192.168.137.1:7001/visit/patientVisit.do?method=qryVisitDetail&visitId="+patientVisitT.getVisitId();
+//		String url="http://192.168.137.1:7001/visit/mq/default.htm";
+//	 	String url="http://192.168.137.1:7001/visit/login/login.html";
+		String url="http://www.hiseemedical.com:10821/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag;
+//	 	String url="http://192.168.137.1:7001/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag;
+		intent.putExtra("url", url);
+		intent.putExtra("visitId", visitId);
+		intent.putExtra("userId", patientVisitT.getPatientId());
+		intent.putExtra("title", patientVisitT.getName());
+		startActivity(intent);
+	}
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		initView();
+		initValue();
 	}
 }

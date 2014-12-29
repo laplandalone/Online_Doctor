@@ -202,4 +202,9 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	public RequestParams addWakeT(String wakeTstr) {
 		return ParamUtil.getRequestParams("BUS20048", new String[]{"wakeTstr"},new Object[]{wakeTstr});
 	}
+	
+	@Override
+	public RequestParams getUserWakeById(String visitId) {
+		return ParamUtil.getRequestParams("BUS20051", new String[]{"visitId"},new Object[]{visitId});
+	}
 }

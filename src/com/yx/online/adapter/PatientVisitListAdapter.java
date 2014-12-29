@@ -78,9 +78,10 @@ public class PatientVisitListAdapter  extends BaseAdapter
 		 String visitType = patientVisitT.getVisitType();
 		 String  copyFlag=patientVisitT.getCopyFlag();
 		 textView.setText(patientVisitT.getVisitName());
-		 textView3.setText(visitType);
+		 textView3.setText(patientVisitT.getName());
 		 textView4.setText(patientVisitT.getVisitId());
-		 
+		 hander.setText(patientVisitT.getCreateDate());
+		/*
 		 if("Y".equals(copyFlag))
 		 {
 			 hander.setText("已诊断");
@@ -100,7 +101,7 @@ public class PatientVisitListAdapter  extends BaseAdapter
 					mContext.startActivity(it);
 				}
 			});
-		 }
+		 }*/
 		return convertView;
 	}
 

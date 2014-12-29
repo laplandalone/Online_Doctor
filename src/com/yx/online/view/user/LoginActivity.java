@@ -194,7 +194,7 @@ public class LoginActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("用户登录");
+		title.setText("亚心在线");
 		back.setVisibility(View.GONE);
 		initViewPager();// 初始化图片
 		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
