@@ -22,6 +22,17 @@ public class User
 	@Expose
 	private String ques_num;
 	
+	@Expose
+	private String visit_num;
+	
+	public String getVisit_num() {
+		return visit_num;
+	}
+
+	public void setVisit_num(String visit_num) {
+		this.visit_num = visit_num;
+	}
+
 	public String getRegister_num() {
 		return register_num;
 	}

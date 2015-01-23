@@ -1,10 +1,13 @@
 package com.yx.online.view.patient;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ import com.yx.online.doctor.R;
 import com.yx.online.model.User;
 import com.yx.online.tools.HealthConstant;
 import com.yx.online.tools.HealthUtil;
+import com.yx.online.view.user.UserMainActivity;
 import com.yx.online.view.user.VisitTalkActivity;
 
 public class VisitDetailActivity extends BaseActivity
@@ -33,6 +37,7 @@ public class VisitDetailActivity extends BaseActivity
 	@ViewInject(R.id.title)
 	private TextView title;
 	WebView web;
+	private Context mContext;
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -47,16 +52,18 @@ public class VisitDetailActivity extends BaseActivity
 		addActivity(this);
 		initView();
 		initValue();
+		mContext=this;
 	}
 
 	@OnClick(R.id.back)
 	public void toBack(View v)
 	{
-//		Intent intent = new Intent(VisitDetailActivity.this, MainPageActivity.class);
-//		startActivity(intent);
-//		exit();
+		Intent intent = new Intent(VisitDetailActivity.this, UserMainActivity.class);
+		startActivity(intent);
+		exit();
 	}
 	
+	@JavascriptInterface
 	public void visitTalk()
 	{
 		Intent intent = new Intent(VisitDetailActivity.this,VisitTalkActivity.class);
@@ -67,7 +74,24 @@ public class VisitDetailActivity extends BaseActivity
 		startActivity(intent);
 		finish();
 	}
-	@SuppressLint("JavascriptInterface")
+	
+	@JavascriptInterface
+	public void showImg(String imgUrl)
+	{
+		Uri mUri = Uri.parse("http://123.57.78.38:10841/"+imgUrl);
+		Intent it = new Intent(Intent.ACTION_VIEW);
+		it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        it.setDataAndType(mUri, "image/*");
+		mContext.startActivity(it);
+	}
+	
+	@JavascriptInterface
+	public void alert(String msg)
+	{
+		HealthUtil.infoAlert(VisitDetailActivity.this,msg);
+	}
+	
+	@JavascriptInterface
 	@Override
 	protected void initView()
 	{
@@ -157,7 +181,7 @@ public class VisitDetailActivity extends BaseActivity
 		MineRequestCallBack requestCallBack = new MineRequestCallBack(responseCode);
 		if (httpHandler != null)
 		{
-			httpHandler.stop();
+			httpHandler.cancel();
 		}
 		httpHandler = mHttpUtils.send(HttpMethod.POST, HealthConstant.URL, param, requestCallBack);
 	}

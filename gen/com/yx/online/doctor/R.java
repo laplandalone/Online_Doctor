@@ -292,6 +292,7 @@ containing a value of this type.
         public static final int article_list_layout=0x7f09009c;
         public static final int article_photo=0x7f0901c0;
         public static final int article_title=0x7f090266;
+        public static final int askButton=0x7f09036e;
         public static final int ask_again_text=0x7f09003d;
         public static final int ask_buttom=0x7f09002e;
         public static final int ask_online=0x7f090055;
@@ -379,7 +380,7 @@ containing a value of this type.
         public static final int comments=0x7f090102;
         public static final int comtext1=0x7f090343;
         public static final int concurrent=0x7f0900e8;
-        public static final int confirmPsw=0x7f09036c;
+        public static final int confirmPsw=0x7f09036d;
         public static final int confirm_num=0x7f090128;
         public static final int confirm_password=0x7f090308;
         public static final int confirm_price=0x7f090129;
@@ -752,7 +753,7 @@ containing a value of this type.
         public static final int notification_message=0x7f09034f;
         public static final int ok=0x7f090111;
         public static final int old_password=0x7f090306;
-        public static final int old_psw=0x7f09036a;
+        public static final int old_psw=0x7f09036b;
         public static final int online1=0x7f0901b0;
         public static final int online2=0x7f0901b2;
         public static final int online3=0x7f0901b4;
@@ -771,7 +772,7 @@ containing a value of this type.
         public static final int order_status=0x7f090274;
         public static final int order_time=0x7f090092;
         public static final int order_type=0x7f090091;
-        public static final int outLogin=0x7f090369;
+        public static final int outLogin=0x7f09036a;
         public static final int out_patient_place=0x7f0900b9;
         public static final int out_patient_time=0x7f0900b8;
         public static final int pageScroll=0x7f09004d;
@@ -817,7 +818,7 @@ containing a value of this type.
         public static final int provice_tv=0x7f090226;
         public static final int province_city=0x7f0902f4;
         public static final int psChangeLay=0x7f09020b;
-        public static final int psw=0x7f09036b;
+        public static final int psw=0x7f09036c;
         public static final int pull_to_refresh_header=0x7f090293;
         public static final int pull_to_refresh_image=0x7f090295;
         public static final int pull_to_refresh_progress=0x7f090294;
@@ -1098,6 +1099,7 @@ containing a value of this type.
         public static final int viewPage=0x7f09004e;
         public static final int view_group=0x7f090050;
         public static final int viewfinder_view=0x7f090089;
+        public static final int visit_num=0x7f090369;
         public static final int voice=0x7f09002c;
         public static final int voice_length=0x7f09002d;
         public static final int walk=0x7f090105;
@@ -1119,15 +1121,15 @@ containing a value of this type.
         public static final int work2=0x7f09019c;
         public static final int work3=0x7f09019d;
         public static final int x_check_get=0x7f090049;
-        public static final int xlistview_footer_content=0x7f09036d;
-        public static final int xlistview_footer_hint_textview=0x7f09036f;
-        public static final int xlistview_footer_progressbar=0x7f09036e;
-        public static final int xlistview_header_arrow=0x7f090374;
-        public static final int xlistview_header_content=0x7f090370;
-        public static final int xlistview_header_hint_textview=0x7f090372;
-        public static final int xlistview_header_progressbar=0x7f090375;
-        public static final int xlistview_header_text=0x7f090371;
-        public static final int xlistview_header_time=0x7f090373;
+        public static final int xlistview_footer_content=0x7f09036f;
+        public static final int xlistview_footer_hint_textview=0x7f090371;
+        public static final int xlistview_footer_progressbar=0x7f090370;
+        public static final int xlistview_header_arrow=0x7f090376;
+        public static final int xlistview_header_content=0x7f090372;
+        public static final int xlistview_header_hint_textview=0x7f090374;
+        public static final int xlistview_header_progressbar=0x7f090377;
+        public static final int xlistview_header_text=0x7f090373;
+        public static final int xlistview_header_time=0x7f090375;
         public static final int yc_btn=0x7f090339;
         public static final int yc_btnaaa=0x7f090334;
         public static final int yg_btn=0x7f09032a;

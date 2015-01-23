@@ -3,36 +3,20 @@ package com.yx.online.adapter;
 import java.util.List;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.lidroid.xutils.BitmapUtils;
 import com.yx.online.doctor.R;
 import com.yx.online.model.PatientVisitT;
-import com.yx.online.view.user.VisitTalkActivity;
 
 public class PatientVisitListAdapter  extends BaseAdapter
 {
 	private Context mContext;
 
 	private List<PatientVisitT> patientVisitTs;
-
-	private BitmapUtils bitmapUtils;
- 
-	
-
-	public List<PatientVisitT> getPatientVisitTs() {
-		return patientVisitTs;
-	}
-
-	public void setPatientVisitTs(List<PatientVisitT> patientVisitTs) {
-		this.patientVisitTs = patientVisitTs;
-	}
 
 	public PatientVisitListAdapter(Context context, List<PatientVisitT> patientVisitTs)
 	{
@@ -75,33 +59,11 @@ public class PatientVisitListAdapter  extends BaseAdapter
 		 TextView textView4 = (TextView)convertView.findViewById( R.id.text4);
 		
 		 PatientVisitT patientVisitT = patientVisitTs.get(position);
-		 String visitType = patientVisitT.getVisitType();
-		 String  copyFlag=patientVisitT.getCopyFlag();
 		 textView.setText(patientVisitT.getVisitName());
 		 textView3.setText(patientVisitT.getName());
 		 textView4.setText(patientVisitT.getVisitId());
 		 hander.setText(patientVisitT.getCreateDate());
-		/*
-		 if("Y".equals(copyFlag))
-		 {
-			 hander.setText("已诊断");
-		 }else
-		 {
-			 hander.setTag(patientVisitT);
-			 hander.setOnClickListener(new OnClickListener()
-			 {
-				@Override
-				public void onClick(View v)
-				{
-					// TODO Auto-generated method stub
-					Intent it = new Intent(mContext,VisitTalkActivity.class);
-					PatientVisitT pVT =(PatientVisitT) v.getTag();
-					it.putExtra("visitId",pVT.getVisitId());
-					it.putExtra("userId",pVT.getPatientId());
-					mContext.startActivity(it);
-				}
-			});
-		 }*/
+	 
 		return convertView;
 	}
 

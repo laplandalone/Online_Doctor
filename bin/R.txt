@@ -262,6 +262,7 @@ int id article_detail_title 0x7f0901bc
 int id article_list_layout 0x7f09009c
 int id article_photo 0x7f0901c0
 int id article_title 0x7f090266
+int id askButton 0x7f09036e
 int id ask_again_text 0x7f09003d
 int id ask_buttom 0x7f09002e
 int id ask_online 0x7f090055
@@ -349,7 +350,7 @@ int id comment_text 0x7f0900ef
 int id comments 0x7f090102
 int id comtext1 0x7f090343
 int id concurrent 0x7f0900e8
-int id confirmPsw 0x7f09036c
+int id confirmPsw 0x7f09036d
 int id confirm_num 0x7f090128
 int id confirm_password 0x7f090308
 int id confirm_price 0x7f090129
@@ -722,7 +723,7 @@ int id nomorl 0x7f09009a
 int id notification_message 0x7f09034f
 int id ok 0x7f090111
 int id old_password 0x7f090306
-int id old_psw 0x7f09036a
+int id old_psw 0x7f09036b
 int id online1 0x7f0901b0
 int id online2 0x7f0901b2
 int id online3 0x7f0901b4
@@ -741,7 +742,7 @@ int id order_number 0x7f090051
 int id order_status 0x7f090274
 int id order_time 0x7f090092
 int id order_type 0x7f090091
-int id outLogin 0x7f090369
+int id outLogin 0x7f09036a
 int id out_patient_place 0x7f0900b9
 int id out_patient_time 0x7f0900b8
 int id pageScroll 0x7f09004d
@@ -787,7 +788,7 @@ int id progressBar 0x7f0902d9
 int id provice_tv 0x7f090226
 int id province_city 0x7f0902f4
 int id psChangeLay 0x7f09020b
-int id psw 0x7f09036b
+int id psw 0x7f09036c
 int id pull_to_refresh_header 0x7f090293
 int id pull_to_refresh_image 0x7f090295
 int id pull_to_refresh_progress 0x7f090294
@@ -1068,6 +1069,7 @@ int id viewGroup 0x7f090020
 int id viewPage 0x7f09004e
 int id view_group 0x7f090050
 int id viewfinder_view 0x7f090089
+int id visit_num 0x7f090369
 int id voice 0x7f09002c
 int id voice_length 0x7f09002d
 int id walk 0x7f090105
@@ -1089,15 +1091,15 @@ int id work1 0x7f09019b
 int id work2 0x7f09019c
 int id work3 0x7f09019d
 int id x_check_get 0x7f090049
-int id xlistview_footer_content 0x7f09036d
-int id xlistview_footer_hint_textview 0x7f09036f
-int id xlistview_footer_progressbar 0x7f09036e
-int id xlistview_header_arrow 0x7f090374
-int id xlistview_header_content 0x7f090370
-int id xlistview_header_hint_textview 0x7f090372
-int id xlistview_header_progressbar 0x7f090375
-int id xlistview_header_text 0x7f090371
-int id xlistview_header_time 0x7f090373
+int id xlistview_footer_content 0x7f09036f
+int id xlistview_footer_hint_textview 0x7f090371
+int id xlistview_footer_progressbar 0x7f090370
+int id xlistview_header_arrow 0x7f090376
+int id xlistview_header_content 0x7f090372
+int id xlistview_header_hint_textview 0x7f090374
+int id xlistview_header_progressbar 0x7f090377
+int id xlistview_header_text 0x7f090373
+int id xlistview_header_time 0x7f090375
 int id yc_btn 0x7f090339
 int id yc_btnaaa 0x7f090334
 int id yg_btn 0x7f09032a

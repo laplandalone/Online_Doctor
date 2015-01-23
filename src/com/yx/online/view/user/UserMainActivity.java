@@ -53,6 +53,9 @@ public class UserMainActivity extends BaseActivity
 	@ViewInject(R.id.ques_num)
 	private TextView ques_num;
 	
+	@ViewInject(R.id.visit_num)
+	private TextView visit_num;
+	
 	@ViewInject(R.id.item_layout1)
 	private LinearLayout itemLayout1;
 
@@ -259,6 +262,7 @@ public class UserMainActivity extends BaseActivity
 		loginNameTV.setText("欢迎您,"+user.getName()+"医生!");
 		String num1=user.getRegister_num();
 		String num2=user.getQues_num();
+		String num3=user.getVisit_num();
 		if(num1==null || "".equals(num1))
 		{
 			num1="0";
@@ -267,8 +271,14 @@ public class UserMainActivity extends BaseActivity
 		{
 			num2="0";
 		}
+		if(num3==null || "".equals(num3))
+		{
+			num3="0";
+		}
+		
 		register_num.setText(num1);
 		ques_num.setText(num2);
+		visit_num.setText(num3);
 		back.setVisibility(View.GONE);
  
 	}
@@ -297,7 +307,7 @@ public class UserMainActivity extends BaseActivity
 		MineRequestCallBack requestCallBack = new MineRequestCallBack(responseCode);
 		if (httpHandler != null)
 		{
-			httpHandler.stop();
+			httpHandler.cancel();
 		}
 		httpHandler = mHttpUtils.send(HttpMethod.POST, HealthConstant.URL, param, requestCallBack);
 	}
@@ -416,5 +426,13 @@ public class UserMainActivity extends BaseActivity
 				}).setTitle("提示").setMessage("密码已重置请查收").create();
 		alertDialog.setCanceledOnTouchOutside(false);
 		alertDialog.show();
+	}
+	
+	@Override
+	protected void onResume()
+	{
+		// TODO Auto-generated method stub
+		super.onResume();
+		initView();
 	}
 }

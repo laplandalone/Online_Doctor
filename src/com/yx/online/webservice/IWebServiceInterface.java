@@ -69,7 +69,7 @@ public interface IWebServiceInterface {
 	
 	public RequestParams doctorRegisterById(String doctorId);
 	
-	public RequestParams getPatientVisits();
+	public RequestParams getPatientVisits(String copyFlag);
 	
 	public RequestParams updateManager(String manager);
 	

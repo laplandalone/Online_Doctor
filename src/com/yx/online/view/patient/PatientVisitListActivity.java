@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -41,12 +42,23 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 	
 	@ViewInject(R.id.title)
 	private TextView title;
-	private String userId="";
-	private User user;
+	
+	@ViewInject(R.id.ans_line)
+	ImageView ans_line;
+	
+	@ViewInject(R.id.noans_line)
+	ImageView noans_line;
+	
+	@ViewInject(R.id.text1)
+	private TextView text1;
+	
+	@ViewInject(R.id.text2)
+	private TextView text2;
+	
 	private ListView list;
 	private List<PatientVisitT> patientVisitTs ;
 	
-	PatientVisitListAdapter adapter;
+	private User user;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -54,7 +66,7 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.patient_visit_list);
-		list = (ListView) findViewById(R.id.comlist);
+		this.list = (ListView) findViewById(R.id.comlist);
 		ViewUtils.inject(this);
 		addActivity(this);
 		initView();
@@ -75,11 +87,40 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 
 	}
 	
+	@OnClick(R.id.noans)
+	public void questionAns(View v)
+	{
+		HealthUtil.visit_flag=false;
+		text1.setTextColor(this.getResources().getColor(R.color.black));
+		text2.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
+		ans_line.setVisibility(View.GONE);
+		noans_line.setVisibility(View.VISIBLE);
+		dialog.setMessage("正在加载,请稍后...");
+		dialog.show();
+		RequestParams param = webInterface.getPatientVisits("N");
+		invokeWebServer(param, GET_LIST);
+	}
+
+	@OnClick(R.id.ans)
+	public void questionNoAns(View v)
+	{
+		HealthUtil.visit_flag=true;
+		text1.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
+		text2.setTextColor(this.getResources().getColor(R.color.black));
+		ans_line.setVisibility(View.VISIBLE);
+		noans_line.setVisibility(View.GONE);
+		dialog.setMessage("正在加载,请稍后...");
+		dialog.show();
+		RequestParams param = webInterface.getPatientVisits("Y");
+		invokeWebServer(param, GET_LIST);
+	}
+
 	@Override
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
 		title.setText("患者随访");
+		user=HealthUtil.getUserInfo();
 	}
 	
 	@Override
@@ -87,12 +128,29 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 	{
 		// TODO Auto-generated method stub
 		
-
+		text1.setTextColor(this.getResources().getColor(R.color.black));
+		text2.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
+		ans_line.setVisibility(View.GONE);
+		noans_line.setVisibility(View.VISIBLE);
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		// TODO Auto-generated method stub
-		String hospitalId=HealthUtil.readHospitalId();
-		RequestParams param = webInterface.getPatientVisits();
+		String visitFlag="N";
+		if(HealthUtil.visit_flag)
+		{
+			visitFlag="Y";
+			text1.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
+			text2.setTextColor(this.getResources().getColor(R.color.black));
+			ans_line.setVisibility(View.VISIBLE);
+			noans_line.setVisibility(View.GONE);
+		}else
+		{
+			text1.setTextColor(this.getResources().getColor(R.color.black));
+			text2.setTextColor(this.getResources().getColor(R.color.TextColorGreen));
+			ans_line.setVisibility(View.GONE);
+			noans_line.setVisibility(View.VISIBLE);
+		}
+		RequestParams param = webInterface.getPatientVisits(visitFlag);
 		invokeWebServer(param, GET_LIST);
 	}
 
@@ -102,7 +160,7 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 		MineRequestCallBack requestCallBack = new MineRequestCallBack(responseCode);
 		if (httpHandler != null)
 		{
-			httpHandler.stop();
+			httpHandler.cancel();
 		}
 		httpHandler = mHttpUtils.send(HttpMethod.POST, HealthConstant.URL, param, requestCallBack);
 	}
@@ -168,17 +226,22 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 		this.patientVisitTs = gson.fromJson(jsonArray, new TypeToken<List<PatientVisitT>>()
 		{
 		}.getType());
-		adapter = new PatientVisitListAdapter(PatientVisitListActivity.this, patientVisitTs);
+		PatientVisitListAdapter adapter = new PatientVisitListAdapter(PatientVisitListActivity.this, patientVisitTs);
 		this.list.setAdapter(adapter);
 		this.list.setOnItemClickListener(this);
-	
+		if(!HealthUtil.visit_flag)
+		{
+			user.setVisit_num(patientVisitTs.size()+"");
+		}
 		if( patientVisitTs.size()==0)
 		{
 			layout.setVisibility(View.VISIBLE);
 			list.setVisibility(View.GONE);
+		}else
+		{
+			layout.setVisibility(View.GONE);
+			list.setVisibility(View.VISIBLE);
 		}
-		this.list.setAdapter(adapter);
-		this.list.setOnItemClickListener(this);
 	}
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
@@ -188,12 +251,15 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 		PatientVisitT patientVisitT = patientVisitTs.get(position);
 		String visitId=patientVisitT.getVisitId();
 		String copyFlag=patientVisitT.getCopyFlag();
-//		String url="http://www.hiseemedical.com:10821/visit/patientVisit.do?method=qryVisitDetail&visitId="+patientVisitT.getVisitId();
-//		String url="http://192.168.137.1:7001/visit/patientVisit.do?method=qryVisitDetail&visitId="+patientVisitT.getVisitId();
-//		String url="http://192.168.137.1:7001/visit/mq/default.htm";
-//	 	String url="http://192.168.137.1:7001/visit/login/login.html";
-		String url="http://www.hiseemedical.com:10821/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag;
-//	 	String url="http://192.168.137.1:7001/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag;
+		String patientId=patientVisitT.getCardId()+"";
+		String operType="无";
+		String userName=patientVisitT.getVisitName();
+		if(patientId!=null && patientId.length()>6)
+		{
+			patientId=patientId.substring(patientId.length()-6,patientId.length());
+		}
+		String url="http://123.57.78.38:10841/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag+"&name="+userName+"&patientId="+patientId+"&operType="+operType;
+//	 	String url="http://192.168.137.1:7001/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag+"&name="+userName+"&patientId="+patientId+"&operType="+operType;
 		intent.putExtra("url", url);
 		intent.putExtra("visitId", visitId);
 		intent.putExtra("userId", patientVisitT.getPatientId());
@@ -201,7 +267,8 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 		startActivity(intent);
 	}
 	@Override
-	protected void onResume() {
+	protected void onResume()
+	{
 		// TODO Auto-generated method stub
 		super.onResume();
 		initView();

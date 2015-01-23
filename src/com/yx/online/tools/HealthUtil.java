@@ -47,13 +47,16 @@ import com.yx.online.model.User;
  */
 public class HealthUtil {
 	
-	 public static final boolean DEBUG = true;
+	  public static final boolean DEBUG = true;
 	  private static final int LOG_SIZE_LIMIT = 3500;
 	  public static final String LOG_TAG = "Digital_Medical";
 	  private static SharedPreferences userPreferences;
 
 	  private static Context mContext = RegApplication.getInstance();
 	  public static boolean isNewVersionFlag = false ;
+	  
+	  public static boolean visit_flag = false ;
+	  
 		static 
 		{
 			if (userPreferences == null)

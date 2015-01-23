@@ -1,6 +1,5 @@
 package com.yx.online.view.user;
 
-import java.util.Date;
 import java.util.List;
 
 import android.app.AlertDialog;
@@ -11,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -55,6 +55,8 @@ public class VisitTalkActivity extends BaseActivity
 
 	private ListView talklist;
 	
+	@ViewInject(R.id.askButton)
+	LinearLayout layout;
 	private List<WakeT> wakeTs;
 	String userId;
 	String doctorId;
@@ -172,7 +174,7 @@ public class VisitTalkActivity extends BaseActivity
 		MineRequestCallBack requestCallBack = new MineRequestCallBack(responseCode);
 		if (httpHandler != null)
 		{
-			httpHandler.stop();
+			httpHandler.cancel();
 		}
 		httpHandler = mHttpUtils.send(HttpMethod.POST, HealthConstant.URL, param, requestCallBack);
 	}
@@ -244,6 +246,7 @@ public class VisitTalkActivity extends BaseActivity
 				{
 					WakeAdapter adapter = new WakeAdapter(VisitTalkActivity.this, wakeTs);
 					talklist.setAdapter(adapter);
+					layout.setVisibility(View.GONE);
 				}
 				 
 				
