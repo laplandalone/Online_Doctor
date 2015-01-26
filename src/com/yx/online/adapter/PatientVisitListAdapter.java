@@ -61,7 +61,7 @@ public class PatientVisitListAdapter  extends BaseAdapter
 		 PatientVisitT patientVisitT = patientVisitTs.get(position);
 		 textView.setText(patientVisitT.getVisitName());
 		 textView3.setText(patientVisitT.getName());
-		 textView4.setText(patientVisitT.getVisitId());
+		 textView4.setText(patientVisitT.getPatientId());
 		 hander.setText(patientVisitT.getCreateDate());
 	 
 		return convertView;
