@@ -251,7 +251,7 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 		PatientVisitT patientVisitT = patientVisitTs.get(position);
 		String visitId=patientVisitT.getVisitId();
 		String copyFlag=patientVisitT.getCopyFlag();
-		String patientId=patientVisitT.getCardId()+"";
+		String patientId=patientVisitT.getPatientId()+"";
 		String operType="无";
 		String userName=patientVisitT.getVisitName();
 		if(patientId!=null && patientId.length()>6)
@@ -262,7 +262,8 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 //	 	String url="http://192.168.137.1:7001/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag+"&name="+userName+"&patientId="+patientId+"&operType="+operType;
 		intent.putExtra("url", url);
 		intent.putExtra("visitId", visitId);
-		intent.putExtra("userId", patientVisitT.getPatientId());
+		intent.putExtra("patientId", patientVisitT.getPatientId());
+		intent.putExtra("userId", patientVisitT.getUserId());
 		intent.putExtra("title", patientVisitT.getName());
 		startActivity(intent);
 	}

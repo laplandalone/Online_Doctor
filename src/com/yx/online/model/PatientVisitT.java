@@ -19,10 +19,19 @@ public class PatientVisitT implements java.io.Serializable {
 	private String createDate;
 	private String copyFlag;
 	private String name;
+	private String userId;
 	// Constructors
 
 	public String getName() {
 		return name;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public void setName(String name) {
