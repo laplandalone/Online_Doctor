@@ -46,13 +46,12 @@ public class LoginActivity extends BaseActivity
 	@ViewInject(R.id.title)
 	private TextView title;
 	
-	@ViewInject(R.id.password_find)
-	private TextView pswFind;
-	
 	@ViewInject(R.id.sign_in)
 	private ImageButton loginBtn;
+	
 	@ViewInject(R.id.rember_psw)
 	private ImageButton remberPsw;
+	
 	@ViewInject(R.id.login_auto)
 	private ImageButton loginAuto;
 
@@ -144,20 +143,6 @@ public class LoginActivity extends BaseActivity
 
 	}
 	
-	@OnClick(R.id.password_find)
-	public void pswFind(View v)
-	{
-		String telephone=userName.getText().toString().trim();
-		if (!HealthUtil.isMobileNum(telephone))
-		{
-			HealthUtil.infoAlert(LoginActivity.this, "手机号码为空或格式错误!");
-			return;
-		}
-		dialog.setMessage("密码重置中,请稍候...");
-		dialog.show();
-		RequestParams param = webInterface.getAuthCode(telephone,"set_psw");
-		invokeWebServer(param, SET_PSW);
-	}
 
 	@OnClick(R.id.login_auto)
 	public void loginAuto(View v)

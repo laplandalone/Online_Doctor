@@ -133,7 +133,6 @@ public class DownloadService extends Service{
 	    	}
 	    }
 	    c.close();
-//	    Toast.makeText(this, "������������", Toast.LENGTH_LONG).show();
 	    return false;
 	  }
 	  
@@ -188,7 +187,6 @@ public class DownloadService extends Service{
 	
 
 	  
-	  //������������������������������
 	BroadcastReceiver onNotificationClick=new BroadcastReceiver() {
 	    @Override
 		public void onReceive(Context ctxt, Intent intent) {
@@ -196,7 +194,6 @@ public class DownloadService extends Service{
 	    }
 	};
 
-	//��������������������������
 	private class OnCompleteReceiver extends BroadcastReceiver {
 		
 		private long lastDownloadId;

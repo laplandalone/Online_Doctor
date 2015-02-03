@@ -97,7 +97,7 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 		noans_line.setVisibility(View.VISIBLE);
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
-		RequestParams param = webInterface.getPatientVisits("N");
+		RequestParams param = webInterface.getPatientVisits(user.getDoctor_id(),"N");
 		invokeWebServer(param, GET_LIST);
 	}
 
@@ -111,7 +111,7 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 		noans_line.setVisibility(View.GONE);
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
-		RequestParams param = webInterface.getPatientVisits("Y");
+		RequestParams param = webInterface.getPatientVisits(user.getDoctor_id(),"Y");
 		invokeWebServer(param, GET_LIST);
 	}
 
@@ -150,7 +150,7 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 			ans_line.setVisibility(View.GONE);
 			noans_line.setVisibility(View.VISIBLE);
 		}
-		RequestParams param = webInterface.getPatientVisits(visitFlag);
+		RequestParams param = webInterface.getPatientVisits(user.getDoctor_id(),visitFlag);
 		invokeWebServer(param, GET_LIST);
 	}
 
@@ -258,7 +258,7 @@ public class PatientVisitListActivity extends BaseActivity implements OnItemClic
 		{
 			patientId=patientId.substring(patientId.length()-6,patientId.length());
 		}
-		String url="http://123.57.78.38:10841/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag+"&name="+userName+"&patientId="+patientId+"&operType="+operType;
+		String url="http://www.hiseemedical.com:10821/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag+"&name="+userName+"&patientId="+patientId+"&operType="+operType;
 //	 	String url="http://192.168.137.1:7001/visit/visit.jsp?visitId="+visitId+"&copyFlag="+copyFlag+"&name="+userName+"&patientId="+patientId+"&operType="+operType;
 		intent.putExtra("url", url);
 		intent.putExtra("visitId", visitId);

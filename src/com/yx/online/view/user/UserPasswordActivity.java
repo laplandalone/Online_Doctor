@@ -196,7 +196,8 @@ public class UserPasswordActivity extends BaseActivity {
 			if ("success".equals(executeType))
 			{
 				Gson gson = new Gson();
-				userT.setPassword(managerT.getPassword());
+				userT=HealthUtil.getUserInfo();
+				userT.setPassword(managerT.getPassword()); 
 				String userStr = gson.toJson(userT);
 				HealthUtil.writeUserInfo(userStr);
 				HealthUtil.writeUserPassword(managerT.getPassword());

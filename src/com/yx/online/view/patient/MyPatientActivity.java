@@ -11,7 +11,6 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.yx.online.base.BaseActivity;
 import com.yx.online.doctor.R;
-import com.yx.online.view.user.QuestionActivity;
 import com.yx.online.view.user.UserMainActivity;
 
 public class MyPatientActivity extends BaseActivity

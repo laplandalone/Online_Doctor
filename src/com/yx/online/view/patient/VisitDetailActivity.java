@@ -78,7 +78,7 @@ public class VisitDetailActivity extends BaseActivity
 	@JavascriptInterface
 	public void showImg(String imgUrl)
 	{
-		Uri mUri = Uri.parse("http://123.57.78.38:10841/"+imgUrl);
+		Uri mUri = Uri.parse("http://www.hiseemedical.com:10821/"+imgUrl);
 		Intent it = new Intent(Intent.ACTION_VIEW);
 		it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         it.setDataAndType(mUri, "image/*");
